@@ -35,5 +35,5 @@ footer{padding:32px 0 48px;color:var(--mut);font-size:12px}
 .vempty p{margin:4px 0 0;max-width:640px}
 .hero{padding:20px 20px 12px}
 .hero-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
-.hero-title{font-size:17px;font-weight:650;text-transform:capitalize}
+.hero-title{font-size:17px;font-weight:650}
 .hero-scroll{overflow-x:auto}

@@ -36,7 +36,7 @@ export default function Leaderboard({ lb }: { lb: LB }) {
         <label>Split <select value={split} onChange={(e) => setSplit(e.target.value)}>{splits.map((s) => <option key={s}>{s}</option>)}</select></label>
       </div>
       <div className="card hero">
-        <HeroChart title={`${suite.replace("_", " ")} · primary accuracy (${split} split)`} runs={runs} kind={kind}
+        <HeroChart title={`${({uw_synthetic:"Underwriting",claims_synthetic:"Claims adjudication",appeals_real:"Real appeals (CA IMR)",coding_validity:"Medical coding",coverage_qa:"Policy wording QA"} as Record<string,string>)[suite] ?? suite} · primary accuracy, ${split} split`} runs={runs} kind={kind}
           pending={filter === "baseline" ? [] : lb.roster.models.filter((m) => (filter === "all" || kind(m.id) === filter) && !runs.some((r) => r.model.replace("openrouter/", "") === m.id)).map((m) => ({ id: m.id, open: m.open_weights }))} />
       </div>
       <div className="card">

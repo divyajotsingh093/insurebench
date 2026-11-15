@@ -101,7 +101,7 @@ export function SuiteHeatmap({ lb, split, keep }: { lb: LB; split: string; keep:
   const W = labelW + suites.length * cw, H = top + agents.length * ch + 4;
   return (
     <div className="vbox">
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Primary accuracy by agent and suite">
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ maxWidth: W * 1.25 }} role="img" aria-label="Primary accuracy by agent and suite">
         {suites.map((s, j) => <text key={s} x={labelW + j * cw + cw / 2} y={top - 12} fontSize={11} fill={C.ink2} textAnchor="middle">{s.replace("_", " ")}</text>)}
         {agents.map((a, i) => (
           <g key={a.harness + a.model}>
