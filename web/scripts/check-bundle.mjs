@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const dir = new URL("../data/", import.meta.url).pathname;
-const allowed = new Set(["leaderboard.json", "dev_case_ids.json", "README.md"]);
+const allowed = new Set(["leaderboard.json", "dev_case_ids.json", "README.md", "demo.json"]);
 let bad = [];
 for (const f of readdirSync(dir)) {
   if (!allowed.has(f)) bad.push(`unexpected file web/data/${f}`);

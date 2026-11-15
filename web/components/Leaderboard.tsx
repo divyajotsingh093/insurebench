@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import type { Leaderboard as LB, Run } from "@/lib/data";
+import demoData from "@/data/demo.json";
 import { HeroChart, SuiteHeatmap, CostAccuracy } from "@/components/Charts";
 
 const HIDE = new Set(["track", "harness", "model", "suite", "split", "judge", "status_counts", "generated_at", "stopped", "note", "skipped", "skip_reason", "n_cases", "k"]);
@@ -11,7 +12,12 @@ function Cell({ v }: { v: unknown }) {
   return <td>{String(v)}</td>;
 }
 
-export default function Leaderboard({ lb }: { lb: LB }) {
+export default function Leaderboard({ lb: real }: { lb: LB }) {
+  const hasReal = real.runs.some((r) => r.model !== "none" && !r.skipped);
+  const [demo, setDemo] = useState(!hasReal);
+  const lb: LB = demo && !hasReal
+    ? { ...real, runs: [...real.runs, ...(demoData.runs as unknown as Run[])], roster: { ...real.roster, models: demoData.roster as any } }
+    : real;
   const suites = Object.keys(lb.suites);
   const [suite, setSuite] = useState(suites[0]);
   const [filter, setFilter] = useState("all");
@@ -25,7 +31,13 @@ export default function Leaderboard({ lb }: { lb: LB }) {
   const keys = Array.from(new Set(runs.flatMap((r) => Object.keys(r)))).filter((k) => !HIDE.has(k) && runs.some((r) => typeof r[k] === "number"));
   const trace = lb.sample_traces[lb.suites[suite].track];
   return (
-    <>
+    <div className={demo && !hasReal ? "is-demo" : ""}>
+    {!hasReal && (
+      <div className={`demo-banner ${demo ? "on" : ""}`}>
+        <b>{demo ? "Simulated preview." : "No model results yet."}</b>{" "}
+        {demo ? "Every model score on this page is made up to show the layout. Model names are anonymised and the numbers are not real. Real results replace these automatically after the first OpenRouter sweep." : "Only the two reference baselines have run."}
+        <label><input type="checkbox" checked={demo} onChange={(e) => setDemo(e.target.checked)} /> Show simulated preview</label>
+      </div>)}
       <div className="tabs" role="tablist">
         {suites.map((s) => <button key={s} role="tab" aria-selected={s === suite} onClick={() => setSuite(s)}>{s}</button>)}
       </div>
@@ -37,7 +49,7 @@ export default function Leaderboard({ lb }: { lb: LB }) {
       </div>
       <div className="card hero">
         <HeroChart title={`${({uw_synthetic:"Underwriting",claims_synthetic:"Claims adjudication",appeals_real:"Real appeals (CA IMR)",coding_validity:"Medical coding",coverage_qa:"Policy wording QA"} as Record<string,string>)[suite] ?? suite} · primary accuracy, ${split} split`} runs={runs} kind={kind}
-          pending={filter === "baseline" ? [] : lb.roster.models.filter((m) => (filter === "all" || kind(m.id) === filter) && !runs.some((r) => r.model.replace("openrouter/", "") === m.id)).map((m) => ({ id: m.id, open: m.open_weights }))} />
+          pending={filter === "baseline" || (demo && !hasReal) ? [] : lb.roster.models.filter((m) => (filter === "all" || kind(m.id) === filter) && !runs.some((r) => r.model.replace("openrouter/", "") === m.id)).map((m) => ({ id: m.id, open: m.open_weights }))} />
       </div>
       <div className="card">
         <h2>Overview: primary accuracy on every suite</h2>
@@ -79,6 +91,6 @@ export default function Leaderboard({ lb }: { lb: LB }) {
             <tr key={m.id}><td className="mono">{m.id}</td><td>{m.open_weights ? "open" : "closed"}</td><td>{m.context_length?.toLocaleString()}</td>
               <td>{m.usd_per_1m_input}</td><td>{m.usd_per_1m_output}</td><td className="wrap">{m.why}</td></tr>))}</tbody></table>
       </div>
-    </>
+    </div>
   );
 }
