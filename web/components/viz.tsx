@@ -223,6 +223,13 @@ export function ValueMap({ agents, suite, prices, focus, setFocus }: { agents: A
   const hb = METRICS[yk].better === "high";
   const frontier = [...pts].sort((p, q) => p.x - q.x).reduce<typeof pts>((f, p) => (!f.length || (hb ? p.y > f[f.length - 1].y : p.y < f[f.length - 1].y) ? [...f, p] : f), []);
   const onF = new Set(frontier.map((p) => p.a.key));
+  // greedy label placement: skip frontier labels that would collide with one already placed
+  const placed: { x: number; y: number }[] = [];
+  const labelled = new Set<string>();
+  [...frontier].reverse().forEach((p) => {
+    const px = x.f(p.x), py = y.f(p.y);
+    if (placed.every((q) => Math.abs(q.x - px) > 95 || Math.abs(q.y - py) > 16)) { placed.push({ x: px, y: py }); labelled.add(p.a.key); }
+  });
   return (
     <div className="vbox panel">
       <div className="ix-head">
@@ -248,7 +255,7 @@ export function ValueMap({ agents, suite, prices, focus, setFocus }: { agents: A
               onMouseMove={(e) => show(e, [p.a.name, `${METRICS[yk].short}: ${METRICS[yk].fmt(p.y)}`, `${XDEF[xk].label}: ${XDEF[xk].fmt(p.x)}`, onF.has(p.a.key) ? "On the value frontier" : ""].filter(Boolean))} onMouseLeave={hide}>
               <circle cx={x.f(p.x)} cy={y.f(p.y)} r={14} fill="transparent" />
               <circle cx={x.f(p.x)} cy={y.f(p.y)} r={me ? 8 : onF.has(p.a.key) ? 6.5 : 5} fill={C[p.a.kind]} stroke="#fff" strokeWidth={2} style={{ transition: "cx .45s, cy .45s, r .2s" } as React.CSSProperties} />
-              {(onF.has(p.a.key) || me) && <text x={x.f(p.x) + 10} y={y.f(p.y) - 9} fontSize={11} fill={C.ink} fontWeight={me ? 650 : 500}>{p.a.name}</text>}
+              {(labelled.has(p.a.key) || me) && <text x={x.f(p.x) + 10} y={y.f(p.y) - 9} fontSize={11} fill={C.ink} fontWeight={me ? 650 : 500}>{p.a.name}</text>}
             </g>
           );
         })}
