@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import type { Leaderboard as LB, Run } from "@/lib/data";
-import { RankingBars, SuiteHeatmap, CostAccuracy } from "@/components/Charts";
+import { HeroChart, SuiteHeatmap, CostAccuracy } from "@/components/Charts";
 
 const HIDE = new Set(["track", "harness", "model", "suite", "split", "judge", "status_counts", "generated_at", "stopped", "note", "skipped", "skip_reason", "n_cases", "k"]);
 
@@ -26,11 +26,6 @@ export default function Leaderboard({ lb }: { lb: LB }) {
   const trace = lb.sample_traces[lb.suites[suite].track];
   return (
     <>
-      <div className="card">
-        <h2>Overview: primary accuracy on every suite</h2>
-        <p className="muted">Each row is one agent (a model run through a harness). Darker means more cases right. Split: {split}.</p>
-        <SuiteHeatmap lb={lb} split={split} keep={(r) => !r.skipped && (filter === "all" || kind(r.model) === filter)} />
-      </div>
       <div className="tabs" role="tablist">
         {suites.map((s) => <button key={s} role="tab" aria-selected={s === suite} onClick={() => setSuite(s)}>{s}</button>)}
       </div>
@@ -40,9 +35,14 @@ export default function Leaderboard({ lb }: { lb: LB }) {
           <option value="all">all</option><option value="open">open-weight</option><option value="closed">closed</option><option value="baseline">baselines</option></select></label>
         <label>Split <select value={split} onChange={(e) => setSplit(e.target.value)}>{splits.map((s) => <option key={s}>{s}</option>)}</select></label>
       </div>
+      <div className="card hero">
+        <HeroChart title={`${suite.replace("_", " ")} · primary accuracy (${split} split)`} runs={runs} kind={kind}
+          pending={filter === "baseline" ? [] : lb.roster.models.filter((m) => (filter === "all" || kind(m.id) === filter) && !runs.some((r) => r.model.replace("openrouter/", "") === m.id)).map((m) => ({ id: m.id, open: m.open_weights }))} />
+      </div>
       <div className="card">
-        <h2>Ranking: {suite}</h2>
-        {runs.length ? <RankingBars runs={runs} kind={kind} metricDef={lb.metric_defs.primary_accuracy} /> : <p className="muted">No runs yet for this suite, split and filter.</p>}
+        <h2>Overview: primary accuracy on every suite</h2>
+        <p className="muted">Each row is one agent (a model run through a harness). Darker means more cases right. Split: {split}.</p>
+        <SuiteHeatmap lb={lb} split={split} keep={(r) => !r.skipped && (filter === "all" || kind(r.model) === filter)} />
       </div>
       <div className="card">
         <h2>Accuracy vs cost: {suite}</h2>

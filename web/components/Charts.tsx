@@ -173,3 +173,70 @@ export function CostAccuracy({ runs, kind, rosterSize }: { runs: Run[]; kind: (m
     </div>
   );
 }
+
+/* Hero: the classic benchmark-leaderboard chart. Vertical bars sorted by score, value on top,
+   95% Wilson interval whiskers, open vs closed colour, roster models not yet run shown as pending slots. */
+function wilson(p: number, n: number) {
+  if (!n) return [p, p];
+  const z = 1.96, d = 1 + (z * z) / n, c = p + (z * z) / (2 * n), m = z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n));
+  return [Math.max(0, (c - m) / d), Math.min(1, (c + m) / d)];
+}
+export function HeroChart({ runs, kind, pending, title }: { runs: Run[]; kind: (m: string) => Kind; pending: { id: string; open: boolean }[]; title: string }) {
+  const { tip, show, hide } = useTip();
+  const rows = [...runs].filter((r) => typeof r.primary_accuracy === "number").sort((a, b) => b.primary_accuracy - a.primary_accuracy);
+  const slots = rows.length + pending.length;
+  if (!slots) return null;
+  const L = 44, R = 12, T = 28, B = 150;
+  const slotW = Math.max(34, Math.min(72, 900 / slots));
+  const W = L + R + slots * slotW, H = 460;
+  const bw = Math.min(40, slotW * 0.62);
+  const y = (v: number) => T + (1 - v) * (H - T - B);
+  const cx = (i: number) => L + i * slotW + slotW / 2;
+  const name = (r: Run) => (r.model === "none" ? r.harness.replace("baseline_", "") + " baseline" : r.model.split("/").pop()!);
+  const kinds = Array.from(new Set(rows.map((r) => kind(r.model)).concat(pending.map((p) => (p.open ? "open" : "closed") as Kind)))) as Kind[];
+  return (
+    <div className="vbox">
+      <div className="hero-head">
+        <div className="hero-title">{title}</div>
+        <Legend kinds={kinds} />
+      </div>
+      <div className="hero-scroll">
+        <svg viewBox={`0 0 ${W} ${H}`} style={{ minWidth: Math.min(W, 1100), width: "100%" }} role="img" aria-label={title}>
+          {[0, 0.2, 0.4, 0.6, 0.8, 1].map((t) => (
+            <g key={t}>
+              <line x1={L} x2={W - R} y1={y(t)} y2={y(t)} stroke={t === 0 ? C.axis : C.grid} />
+              <text x={L - 8} y={y(t) + 4} fontSize={11} fill={C.muted} textAnchor="end" style={{ fontVariantNumeric: "tabular-nums" }}>{t * 100}</text>
+            </g>
+          ))}
+          <text x={8} y={T - 12} fontSize={11} fill={C.muted}>% correct</text>
+          {rows.map((r, i) => {
+            const v = r.primary_accuracy, [lo, hi] = wilson(v, r.n_cases || 0), x = cx(i), top = y(v), base = y(0), h = Math.max(base - top, 1);
+            return (
+              <g key={r.harness + r.model} onMouseMove={(e) => show(e, [name(r), `${r.harness} harness`, `Primary accuracy ${(v * 100).toFixed(1)}%`, `95% CI ${(lo * 100).toFixed(0)}–${(hi * 100).toFixed(0)}% · n=${r.n_cases}`, r.cost_per_correct_usd ? `$${r.cost_per_correct_usd.toFixed(4)} per correct` : "No API cost"])} onMouseLeave={hide}>
+                <rect x={x - slotW / 2} y={T} width={slotW} height={H - T - B} fill="transparent" />
+                <path d={`M${x - bw / 2},${base} V${top + 4} a4,4 0 0 1 4,-4 H${x + bw / 2 - 4} a4,4 0 0 1 4,4 V${base} Z`} fill={C[kind(r.model)]} />
+                <line x1={x} x2={x} y1={y(hi)} y2={y(lo)} stroke={C.ink} strokeWidth={1.5} opacity={0.55} />
+                <line x1={x - 5} x2={x + 5} y1={y(hi)} y2={y(hi)} stroke={C.ink} strokeWidth={1.5} opacity={0.55} />
+                <line x1={x - 5} x2={x + 5} y1={y(lo)} y2={y(lo)} stroke={C.ink} strokeWidth={1.5} opacity={0.55} />
+                <text x={x} y={Math.min(top, y(hi)) - 6} fontSize={12} fontWeight={600} fill={C.ink} textAnchor="middle" style={{ fontVariantNumeric: "tabular-nums" }}>{(v * 100).toFixed(1)}</text>
+                <text transform={`translate(${x + 4},${base + 12}) rotate(-50)`} fontSize={11.5} fill={C.ink2} textAnchor="end">{name(r)}</text>
+              </g>
+            );
+          })}
+          {pending.map((p, j) => {
+            const i = rows.length + j, x = cx(i), base = y(0);
+            return (
+              <g key={p.id} onMouseMove={(e) => show(e, [p.id, "Queued: not run yet", "Appears after the first OpenRouter sweep"])} onMouseLeave={hide}>
+                <rect x={x - slotW / 2} y={T} width={slotW} height={H - T - B} fill="transparent" />
+                <rect x={x - bw / 2} y={base - 14} width={bw} height={14} rx={3} fill="none" stroke={p.open ? C.open : C.closed} strokeDasharray="3 3" opacity={0.7} />
+                <text transform={`translate(${x + 4},${base + 12}) rotate(-50)`} fontSize={11.5} fill={C.muted} textAnchor="end">{p.id.split("/").pop()}</text>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+      <p className="vnote">Bars: share of cases fully correct. Whiskers: 95% Wilson confidence interval. Dashed stubs: roster models queued for the first sweep, not yet scored.</p>
+      <Tooltip tip={tip} />
+    </div>
+  );
+}
