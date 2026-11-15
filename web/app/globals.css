@@ -22,3 +22,14 @@ pre{background:#f5f5f4;padding:10px;border-radius:8px;overflow:auto;max-height:3
 .ev{border-left:2px solid var(--line);padding:2px 10px;margin:8px 0}.ev.bad{border-color:#dc2626}
 code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 footer{padding:32px 0 48px;color:var(--mut);font-size:12px}
+
+.vbox{position:relative}
+.vlegend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin:0 0 8px}
+.vlegend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.vtip{position:absolute;pointer-events:none;background:#fff;border:1px solid rgba(11,11,11,.1);border-radius:8px;padding:8px 10px;font-size:12px;color:#52514e;box-shadow:0 4px 16px rgba(0,0,0,.08);white-space:nowrap;z-index:5;font-variant-numeric:tabular-nums}
+.vtip-h{color:#0b0b0b;font-weight:600;margin-bottom:2px}
+.vnote{font-size:12px;color:var(--mut);margin:6px 0 0}
+.vramp{display:flex;align-items:center;gap:2px;font-size:11px;color:var(--mut);margin-top:8px}
+.vramp i{width:24px;height:10px;border-radius:2px}.vramp span{margin:0 6px}
+.vempty{border:1px dashed var(--line);border-radius:8px;padding:12px 16px;color:var(--mut)}
+.vempty p{margin:4px 0 0;max-width:640px}

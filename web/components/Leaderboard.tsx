@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import type { Leaderboard as LB, Run } from "@/lib/data";
+import { RankingBars, SuiteHeatmap, CostAccuracy } from "@/components/Charts";
 
 const HIDE = new Set(["track", "harness", "model", "suite", "split", "judge", "status_counts", "generated_at", "stopped", "note", "skipped", "skip_reason", "n_cases", "k"]);
 
@@ -17,7 +18,7 @@ export default function Leaderboard({ lb }: { lb: LB }) {
   const splits = useMemo(() => Array.from(new Set(lb.runs.map((r) => r.split))), [lb]);
   const [split, setSplit] = useState(splits.includes("dev") ? "dev" : splits[0]);
   const roster = useMemo(() => Object.fromEntries(lb.roster.models.map((m) => [m.id, m])), [lb]);
-  const kind = (m: string) => (m === "none" ? "baseline" : roster[m.replace("openrouter/", "")]?.open_weights ? "open" : "closed");
+  const kind = (m: string): "open" | "closed" | "baseline" => (m === "none" ? "baseline" : roster[m.replace("openrouter/", "")]?.open_weights ? "open" : "closed");
   const runs: Run[] = lb.runs.filter((r) => r.suite === suite && r.split === split && !r.skipped && (filter === "all" || kind(r.model) === filter));
   const models = Array.from(new Set(runs.map((r) => r.model)));
   const harnesses = Array.from(new Set(runs.map((r) => r.harness)));
@@ -25,6 +26,11 @@ export default function Leaderboard({ lb }: { lb: LB }) {
   const trace = lb.sample_traces[lb.suites[suite].track];
   return (
     <>
+      <div className="card">
+        <h2>Overview: primary accuracy on every suite</h2>
+        <p className="muted">Each row is one agent (a model run through a harness). Darker means more cases right. Split: {split}.</p>
+        <SuiteHeatmap lb={lb} split={split} keep={(r) => !r.skipped && (filter === "all" || kind(r.model) === filter)} />
+      </div>
       <div className="tabs" role="tablist">
         {suites.map((s) => <button key={s} role="tab" aria-selected={s === suite} onClick={() => setSuite(s)}>{s}</button>)}
       </div>
@@ -33,6 +39,14 @@ export default function Leaderboard({ lb }: { lb: LB }) {
         <label>Models <select value={filter} onChange={(e) => setFilter(e.target.value)}>
           <option value="all">all</option><option value="open">open-weight</option><option value="closed">closed</option><option value="baseline">baselines</option></select></label>
         <label>Split <select value={split} onChange={(e) => setSplit(e.target.value)}>{splits.map((s) => <option key={s}>{s}</option>)}</select></label>
+      </div>
+      <div className="card">
+        <h2>Ranking: {suite}</h2>
+        {runs.length ? <RankingBars runs={runs} kind={kind} metricDef={lb.metric_defs.primary_accuracy} /> : <p className="muted">No runs yet for this suite, split and filter.</p>}
+      </div>
+      <div className="card">
+        <h2>Accuracy vs cost: {suite}</h2>
+        <CostAccuracy runs={runs} kind={kind} rosterSize={lb.roster.models.length} />
       </div>
       <div className="card">
         <h2>Primary accuracy: model &times; harness</h2>
