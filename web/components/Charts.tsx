@@ -55,7 +55,7 @@ export function RankingBars({ runs, kind, metricDef }: { runs: Run[]; kind: (m: 
   const { tip, show, hide } = useTip();
   const rows = [...runs].filter((r) => typeof r.primary_accuracy === "number").sort((a, b) => b.primary_accuracy - a.primary_accuracy);
   if (!rows.length) return null;
-  const W = 760, labelW = 230, rowH = 30, barH = 18, padR = 56, top = 24;
+  const W = 600, labelW = 170, rowH = 30, barH = 18, padR = 48, top = 24;
   const H = top + rows.length * rowH + 28;
   const x = (v: number) => labelW + v * (W - labelW - padR);
   const kinds = Array.from(new Set(rows.map((r) => kind(r.model)))) as Kind[];
@@ -97,7 +97,7 @@ export function SuiteHeatmap({ lb, split, keep }: { lb: LB; split: string; keep:
   const score = (a: Run, s: string) => runs.find((r) => r.suite === s && r.harness === a.harness && r.model === a.model)?.primary_accuracy as number | undefined;
   const mean = (a: Run) => { const v = suites.map((s) => score(a, s)).filter((x): x is number => x !== undefined); return v.reduce((p, c) => p + c, 0) / (v.length || 1); };
   agents.sort((a, b) => mean(b) - mean(a));
-  const labelW = 230, cw = 100, ch = 30, top = 40, gap = 2;
+  const labelW = 160, cw = 88, ch = 32, top = 40, gap = 2;
   const W = labelW + suites.length * cw, H = top + agents.length * ch + 4;
   return (
     <div className="vbox">
@@ -131,14 +131,14 @@ export function SuiteHeatmap({ lb, split, keep }: { lb: LB; split: string; keep:
 export function CostAccuracy({ runs, kind, rosterSize }: { runs: Run[]; kind: (m: string) => Kind; rosterSize: number }) {
   const { tip, show, hide } = useTip();
   const pts = runs.filter((r) => r.cost_per_correct_usd > 0 && typeof r.primary_accuracy === "number");
-  const W = 760, H = 320, L = 56, R = 20, T = 16, B = 40;
+  const W = 600, H = 300, L = 48, R = 16, T = 16, B = 40;
   if (!pts.length) {
     return (
       <div className="vempty">
-        <svg viewBox={`0 0 ${W} 160`} width="100%" aria-hidden>
-          <line x1={L} x2={L} y1={10} y2={130} stroke={C.axis} /><line x1={L} x2={W - R} y1={130} y2={130} stroke={C.axis} />
+        <svg viewBox={`0 0 600 160`} width="100%" aria-hidden>
+          <line x1={L} x2={L} y1={10} y2={130} stroke={C.axis} /><line x1={L} x2={584} y1={130} y2={130} stroke={C.axis} />
           <text x={L - 8} y={16} fontSize={11} fill={C.muted} textAnchor="end">100%</text>
-          <text x={W - R} y={150} fontSize={11} fill={C.muted} textAnchor="end">cost per correct decision (log $) →</text>
+          <text x={584} y={150} fontSize={11} fill={C.muted} textAnchor="end">cost per correct decision (log $) →</text>
         </svg>
         <p>Waiting for the first model sweep. This chart plots accuracy against <b>cost per correct decision</b> for each of the {rosterSize} roster models once they've been run through OpenRouter. The reference baselines don't call an LLM, so they have no cost to plot.</p>
       </div>
