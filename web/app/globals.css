@@ -41,5 +41,47 @@ footer{padding:32px 0 48px;color:var(--mut);font-size:12px}
 .demo-banner:not(.on){border-color:var(--line);background:var(--card);color:var(--mut)}
 .demo-banner label{margin-left:auto;white-space:nowrap;cursor:pointer}
 .is-demo .card{position:relative}
-.is-demo .card::after{content:"SIMULATED DATA · NOT REAL RESULTS";position:absolute;top:-10px;right:16px;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#8a6d00;background:#fff8e1;border:1px solid #f2c94c;border-radius:99px;padding:2px 8px;pointer-events:none}
+
 .is-demo .vbox{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='200'%3E%3Ctext x='20' y='120' transform='rotate(-18 180 100)' font-family='system-ui' font-size='34' font-weight='800' fill='%23b8860b' fill-opacity='0.09'%3ESIMULATED%3C/text%3E%3C/svg%3E")}
+/* ---- v2 viz ---- */
+.tnum{font-variant-numeric:tabular-nums}.small{font-size:12px}.pad{padding:12px}
+h2.sec{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:28px 0 10px;font-weight:650}
+.card.bare{padding:0;border:0;background:none;overflow:visible}
+.panel{background:#f6f5f1;border:1px solid #ebe9e3;border-radius:16px;padding:20px 22px 14px}
+.ix-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.ix-title{font-size:22px;font-weight:500;letter-spacing:-.01em;color:#141413}
+.ix-sub{font-size:13px;color:var(--mut);margin-top:2px;max-width:560px}
+.ix-ctrls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ix-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.hscroll{overflow-x:auto;background:#fff;border:1px solid #ebe9e3;border-radius:12px;padding:6px 4px 0}
+.panel>svg{background:#fff;border:1px solid #ebe9e3;border-radius:12px}
+.seg{display:inline-flex;background:#ecebe6;border-radius:999px;padding:3px}
+.seg button{border:0;background:none;font:inherit;font-size:12.5px;padding:4px 11px;border-radius:999px;color:#52514e;cursor:pointer;transition:background .15s,color .15s}
+.seg button[aria-checked="true"]{background:#fff;color:#0b0b0b;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.ctl{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mut)}
+.ctl .dot,.ctl i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.ix-ctrls select,.ctl select{border-radius:999px;padding:4px 10px;font-size:12.5px;background:#fff;border:1px solid #e3e1db}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 12px;position:sticky;top:0;z-index:4;background:var(--bg);padding:8px 0}
+.toolbar-r{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chip{border:1px solid #e3e1db;background:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:12px;cursor:pointer}
+.bar text{transition:fill .2s}
+.bench-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.bench{text-align:left;font:inherit;background:#fff;border:1px solid #ebe9e3;border-radius:14px;padding:14px 14px 12px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;display:flex;flex-direction:column;gap:4px}
+.bench:hover{box-shadow:0 6px 20px rgba(0,0,0,.06);transform:translateY(-1px)}
+.bench.on{border-color:#2a78d6;box-shadow:0 0 0 3px rgba(42,120,214,.12)}
+.bench-k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.bench-t{font-size:16px;font-weight:600}
+.bench-d{font-size:12.5px;color:#52514e;min-height:36px}
+.bench ol{list-style:none;padding:0;margin:6px 0 4px;display:flex;flex-direction:column;gap:3px}
+.bench li{display:flex;align-items:center;gap:6px;font-size:12.5px}
+.bench li .rk{width:14px;color:var(--mut);font-size:11px}
+.bench li i{width:7px;height:7px;border-radius:50%}
+.bench li b{margin-left:auto;font-weight:600}
+.bench-s{font-size:11px;color:var(--mut);border-top:1px solid #f0efea;padding-top:6px;margin-top:auto}
+.grid2{display:grid;grid-template-columns:1fr;gap:16px}
+details.card summary{cursor:pointer;list-style:none}details.card summary::-webkit-details-marker{display:none}
+details.card[open] summary{margin-bottom:10px}
+.vempty{border:1px dashed #e3e1db;border-radius:12px;padding:16px;color:var(--mut);background:#fff;font-size:13px}
+.is-demo .panel{position:relative}
+.is-demo .panel::after{content:"SIMULATED DATA · NOT REAL RESULTS";position:absolute;top:-10px;right:18px;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#8a6d00;background:#fff8e1;border:1px solid #f2c94c;border-radius:99px;padding:2px 8px;pointer-events:none}
+.is-demo .bench-grid{position:relative}

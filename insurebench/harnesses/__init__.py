@@ -4,8 +4,9 @@ from __future__ import annotations
 from .baselines import BaselineNaive, BaselineRules
 from .frameworks import ClaudeAgentSDK, LangGraphReact, OpenAIAgentsSDK
 from .react_raw import ReactRaw
+from .remote import NeutrinosHarness
 
-HARNESSES = {h.name: h for h in (BaselineRules, BaselineNaive, ReactRaw, LangGraphReact, ClaudeAgentSDK, OpenAIAgentsSDK)}
+HARNESSES = {h.name: h for h in (BaselineRules, BaselineNaive, ReactRaw, LangGraphReact, ClaudeAgentSDK, OpenAIAgentsSDK, NeutrinosHarness)}
 
 
 def get_harness(name: str):

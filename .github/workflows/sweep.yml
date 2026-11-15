@@ -10,7 +10,7 @@ on:
         description: "Models: 'roster', 'roster:N' (first N roster models) or comma list of OpenRouter ids"
         default: "roster:3"
       harnesses:
-        description: "Harnesses (comma list): react_raw,langgraph_react,openai_agents_sdk,claude_agent_sdk"
+        description: "Harnesses (comma list): react_raw,langgraph_react,openai_agents_sdk,claude_agent_sdk,neutrinos"
         default: "react_raw"
       k:
         description: "Repeats per case (pass^k)"
@@ -31,6 +31,8 @@ jobs:
     timeout-minutes: 340
     env:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      NEUTRINOS_AGENT_URL: ${{ secrets.NEUTRINOS_AGENT_URL }}
+      NEUTRINOS_API_KEY: ${{ secrets.NEUTRINOS_API_KEY }}
       INSUREBENCH_PRIVATE_SEED: ${{ secrets.INSUREBENCH_PRIVATE_SEED }}
       BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
     steps:

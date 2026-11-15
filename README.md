@@ -120,3 +120,18 @@ results/      run summaries, dev per-case results, leaderboard.json
 ```
 
 See [METHODOLOGY.md](METHODOLOGY.md) and [DEPLOY.md](DEPLOY.md). Code: Apache-2.0. Data: see [LICENSE-DATA.md](LICENSE-DATA.md).
+
+## Remote-agent harnesses (Neutrinos)
+
+Agent platforms that run outside this process can be scored through the remote-agent protocol in
+`insurebench/harnesses/remote.py`: one HTTPS request per step, the platform replies with the next tool call,
+InsureBench executes it and sends back the result. The platform must act through the same tools as every other
+harness, so results are directly comparable.
+
+The `neutrinos` harness uses it. Set `NEUTRINOS_AGENT_URL` and `NEUTRINOS_API_KEY`, then:
+
+```
+python -m insurebench sweep --suites all --models roster:5 --harnesses react_raw,neutrinos --k 1 --max-usd 10
+```
+
+Running a model through several harnesses fills the Harness workbench on the leaderboard (lift vs plain ReAct).
