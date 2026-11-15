@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "insurebench"
+version = "0.1.0"
+description = "Open benchmark for AI agents on life & health underwriting, claims adjudication, appeals and coding (models x harnesses)."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6", "mcp>=2"]
+
+[project.optional-dependencies]
+agents = ["anthropic", "openai", "langgraph", "langchain-core", "langchain-openai", "langchain-anthropic", "openai-agents", "claude-agent-sdk"]
+dev = ["pytest", "pyarrow"]
+
+[tool.setuptools.packages.find]
+include = ["insurebench*"]
+
+[tool.setuptools.package-data]
+insurebench = ["models/roster.yaml", "report/site_template.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,494 @@
+{
+"Experimental/Investigational|Acute Med Svc Inpt": [
+5,
+2
+],
+"Experimental/Investigational|Alternative Tx": [
+86,
+33
+],
+"Experimental/Investigational|Autism Related Tx": [
+23,
+35
+],
+"Experimental/Investigational|Cancer Care": [
+525,
+370
+],
+"Experimental/Investigational|Cardio-Vasc Proc": [
+113,
+180
+],
+"Experimental/Investigational|Category III Codes": [
+2,
+0
+],
+"Experimental/Investigational|Chiropractic Care": [
+19,
+2
+],
+"Experimental/Investigational|DME": [
+387,
+314
+],
+"Experimental/Investigational|DME MACs": [
+0,
+2
+],
+"Experimental/Investigational|Dent/Orthodont Proc": [
+2,
+2
+],
+"Experimental/Investigational|Diag Imag & Screen": [
+1764,
+1959
+],
+"Experimental/Investigational|Diag/ MD Eval": [
+30,
+4
+],
+"Experimental/Investigational|Drug Ad Oth Oral": [
+2,
+2
+],
+"Experimental/Investigational|Durable Med Equip": [
+0,
+2
+],
+"Experimental/Investigational|Ear-Nose-Thro Proc": [
+126,
+77
+],
+"Experimental/Investigational|Elect/Therm/Radfreq": [
+472,
+283
+],
+"Experimental/Investigational|Eval and Mgmt": [
+0,
+1
+],
+"Experimental/Investigational|Gen Surg Proc": [
+258,
+152
+],
+"Experimental/Investigational|Home Health Care": [
+1,
+0
+],
+"Experimental/Investigational|Medicine Serv Proc": [
+1,
+2
+],
+"Experimental/Investigational|Mental Health": [
+38,
+17
+],
+"Experimental/Investigational|National Temp Codes": [
+1,
+0
+],
+"Experimental/Investigational|Neurosurgery Proc": [
+41,
+51
+],
+"Experimental/Investigational|Not Applicable": [
+7,
+3
+],
+"Experimental/Investigational|Ob-Gyn Proc": [
+38,
+20
+],
+"Experimental/Investigational|Ophthalmology Proc": [
+10,
+13
+],
+"Experimental/Investigational|Orthopedic Proc": [
+603,
+179
+],
+"Experimental/Investigational|Other Thera Proc": [
+0,
+1
+],
+"Experimental/Investigational|Outpatient PPS": [
+0,
+1
+],
+"Experimental/Investigational|Pain Management": [
+224,
+180
+],
+"Experimental/Investigational|Path Lab Proc": [
+4,
+0
+],
+"Experimental/Investigational|Pharmacy": [
+669,
+622
+],
+"Experimental/Investigational|Prev Health Screen": [
+6,
+2
+],
+"Experimental/Investigational|Prop Lab Analyses": [
+1,
+0
+],
+"Experimental/Investigational|Radio Proc": [
+2,
+0
+],
+"Experimental/Investigational|Reconstr/Plast Proc": [
+19,
+28
+],
+"Experimental/Investigational|Rehab/ Svc - Outpt": [
+37,
+39
+],
+"Experimental/Investigational|Rehab/Svcs SNF Inpt": [
+2,
+2
+],
+"Experimental/Investigational|Special Proc": [
+120,
+68
+],
+"Experimental/Investigational|Surgery": [
+10,
+12
+],
+"Experimental/Investigational|Temp Codes": [
+0,
+2
+],
+"Experimental/Investigational|Urology Proc": [
+35,
+31
+],
+"Experimental/Investigational|Vision Services": [
+28,
+34
+],
+"Experimental/Investigational|Vision Services/Ophthalmology": [
+8,
+14
+],
+"Medical Necessity|Acute Med Svc Inpt": [
+167,
+152
+],
+"Medical Necessity|Admin Misc  Invest": [
+1,
+2
+],
+"Medical Necessity|Alcohol Drug Tmt": [
+2,
+17
+],
+"Medical Necessity|Alternative Tx": [
+189,
+106
+],
+"Medical Necessity|Ambulance Transport": [
+0,
+1
+],
+"Medical Necessity|Autism Related Tx": [
+292,
+688
+],
+"Medical Necessity|Cancer Care": [
+384,
+334
+],
+"Medical Necessity|Cardio-Vasc Proc": [
+128,
+82
+],
+"Medical Necessity|Chemo Drugs": [
+1,
+0
+],
+"Medical Necessity|Chiropractic Care": [
+86,
+48
+],
+"Medical Necessity|DME": [
+1089,
+880
+],
+"Medical Necessity|DME MACs": [
+3,
+1
+],
+"Medical Necessity|Dent/Orthodont Proc": [
+67,
+87
+],
+"Medical Necessity|Diag Imag & Screen": [
+1310,
+939
+],
+"Medical Necessity|Diag/ MD Eval": [
+368,
+365
+],
+"Medical Necessity|Drug Ad Oth Oral": [
+2,
+35
+],
+"Medical Necessity|Durable Med Equip": [
+5,
+11
+],
+"Medical Necessity|Ear-Nose-Thro Proc": [
+110,
+173
+],
+"Medical Necessity|Elect/Therm/Radfreq": [
+164,
+194
+],
+"Medical Necessity|Emergency/Urg Care": [
+20,
+17
+],
+"Medical Necessity|Est National Codes": [
+1,
+0
+],
+"Medical Necessity|Eval and Mgmt": [
+8,
+4
+],
+"Medical Necessity|Gen Surg Proc": [
+487,
+545
+],
+"Medical Necessity|Gen Surg proc": [
+1,
+1
+],
+"Medical Necessity|Home Health Care": [
+80,
+71
+],
+"Medical Necessity|MLTSS": [
+2,
+1
+],
+"Medical Necessity|Med Surg Supplies": [
+1,
+1
+],
+"Medical Necessity|Medicine Serv Proc": [
+14,
+16
+],
+"Medical Necessity|Mental Health": [
+1899,
+2818
+],
+"Medical Necessity|National Temp Codes": [
+1,
+0
+],
+"Medical Necessity|Neurosurgery Proc": [
+40,
+35
+],
+"Medical Necessity|Not Applicable": [
+10,
+11
+],
+"Medical Necessity|Ob-Gyn Proc": [
+121,
+104
+],
+"Medical Necessity|Ophthalmology Proc": [
+26,
+13
+],
+"Medical Necessity|Ortho Proc Serv": [
+1,
+0
+],
+"Medical Necessity|Orthopedic Proc": [
+565,
+307
+],
+"Medical Necessity|Pain Management": [
+363,
+1053
+],
+"Medical Necessity|Path Lab Proc": [
+1,
+1
+],
+"Medical Necessity|Path Lab Serv": [
+0,
+1
+],
+"Medical Necessity|Pharmacy": [
+4061,
+6568
+],
+"Medical Necessity|Prev Health Screen": [
+26,
+10
+],
+"Medical Necessity|Proc/Profess Serv": [
+1,
+1
+],
+"Medical Necessity|Prosthetic Proc": [
+0,
+1
+],
+"Medical Necessity|Radio Proc": [
+12,
+15
+],
+"Medical Necessity|Reconstr/Plast Proc": [
+691,
+569
+],
+"Medical Necessity|Rehab/ Svc - Outpt": [
+584,
+719
+],
+"Medical Necessity|Rehab/Svcs SNF Inpt": [
+390,
+126
+],
+"Medical Necessity|Special Proc": [
+203,
+107
+],
+"Medical Necessity|Surgery": [
+22,
+38
+],
+"Medical Necessity|Temp Codes": [
+0,
+4
+],
+"Medical Necessity|Transportation": [
+26,
+28
+],
+"Medical Necessity|Urology Proc": [
+25,
+12
+],
+"Medical Necessity|Vision Services": [
+37,
+14
+],
+"Medical Necessity|Vision Services/Ophthalmology": [
+14,
+14
+],
+"Urgent Care|Acute Med Svc Inpt": [
+2,
+11
+],
+"Urgent Care|Autism Related Tx": [
+2,
+0
+],
+"Urgent Care|Cancer Care": [
+7,
+2
+],
+"Urgent Care|Cardio-Vasc Proc": [
+1,
+1
+],
+"Urgent Care|Chiropractic Care": [
+3,
+0
+],
+"Urgent Care|Dent/Orthodont Proc": [
+6,
+4
+],
+"Urgent Care|Diag Imag & Screen": [
+9,
+6
+],
+"Urgent Care|Diag/ MD Eval": [
+7,
+1
+],
+"Urgent Care|Ear-Nose-Thro Proc": [
+2,
+2
+],
+"Urgent Care|Elect/Therm/Radfreq": [
+0,
+1
+],
+"Urgent Care|Emergency/Urg Care": [
+324,
+258
+],
+"Urgent Care|Gen Surg Proc": [
+6,
+5
+],
+"Urgent Care|Home Health Care": [
+0,
+1
+],
+"Urgent Care|Mental Health": [
+44,
+10
+],
+"Urgent Care|Neurosurgery Proc": [
+2,
+2
+],
+"Urgent Care|Ob-Gyn Proc": [
+5,
+4
+],
+"Urgent Care|Ophthalmology Proc": [
+2,
+1
+],
+"Urgent Care|Orthopedic Proc": [
+11,
+7
+],
+"Urgent Care|Pain Management": [
+1,
+0
+],
+"Urgent Care|Reconstr/Plast Proc": [
+2,
+0
+],
+"Urgent Care|Rehab/ Svc - Outpt": [
+2,
+1
+],
+"Urgent Care|Special Proc": [
+1,
+0
+],
+"Urgent Care|Surgery": [
+1,
+0
+],
+"Urgent Care|Transportation": [
+3,
+7
+],
+"Urgent Care|Urology Proc": [
+1,
+0
+]
+}

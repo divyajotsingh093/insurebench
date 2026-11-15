@@ -1,0 +1,24 @@
+{
+ "source_url": "https://download.cms.gov/marketplace-puf/2025/plan-attributes-puf.zip",
+ "retrieved": "2026-11-15",
+ "sha256": "dcfe14c4be25c2db9d00e1fb013c83ae26af46bee49e889accc711325ef45a13",
+ "plan_year": 2025,
+ "median_individual_deductible": {
+  "Gold": 1500.0,
+  "Silver": 3500.0,
+  "Bronze": 7500.0,
+  "Platinum": 0.0
+ },
+ "median_individual_moop": {
+  "Gold": 7800.0,
+  "Silver": 7350.0,
+  "Bronze": 9200.0,
+  "Platinum": 4300.0
+ },
+ "n_plans": {
+  "Gold": 4102,
+  "Silver": 8577,
+  "Bronze": 4447,
+  "Platinum": 90
+ }
+}

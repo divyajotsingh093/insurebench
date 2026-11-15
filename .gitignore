@@ -1,0 +1,25 @@
+# secrets
+.env
+.env.*
+!.env.example
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+# node / next
+node_modules/
+web/.next/
+web/out/
+web/.vercel/
+.vercel/
+# HIDDEN TEST GOLD: never commit or bundle
+data/gold_hidden/
+# raw downloads from fetch scripts (licenses vary; processed data is committed where allowed)
+data/raw/
+# per-run traces are large; summaries and graded rows are committed
+results/runs/*/traces.jsonl
+results/mcp_traces/
+results/runs/*__test/results.jsonl

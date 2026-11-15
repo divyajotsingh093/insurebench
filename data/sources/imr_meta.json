@@ -1,0 +1,9 @@
+{
+ "source_url": "https://data.chhs.ca.gov/dataset/b79b3447-4c10-4ae6-84e2-1076f83bb24e/resource/3340c5d7-4054-4d03-90e0-5f44290ed095/download/independent-medical-review-imr-determinations-trends.csv",
+ "retrieved": "2026-11-15",
+ "sha256": "f68951823f6ffc09566cc190d97b2808e0269a069843efe809a3f5f90d4c893b",
+ "rows_total": 42749,
+ "pool_after_redaction": 6456,
+ "dev": 40,
+ "test": 40
+}

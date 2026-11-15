@@ -1,0 +1,74 @@
+name: sweep
+# Manual model sweep via OpenRouter. Defaults to a cheap smoke run: dev split, 3 roster models, react_raw, k=1, $2 cap.
+on:
+  workflow_dispatch:
+    inputs:
+      suites:
+        description: "Suites (comma list or 'all'): uw_synthetic,claims_synthetic,appeals_real,coding_validity,coverage_qa"
+        default: "all"
+      models:
+        description: "Models: 'roster', 'roster:N' (first N roster models) or comma list of OpenRouter ids"
+        default: "roster:3"
+      harnesses:
+        description: "Harnesses (comma list): react_raw,langgraph_react,openai_agents_sdk,claude_agent_sdk"
+        default: "react_raw"
+      k:
+        description: "Repeats per case (pass^k)"
+        default: "1"
+      max_usd:
+        description: "Hard spend cap in USD for the whole sweep"
+        default: "2"
+      split:
+        description: "dev (public gold) or test (needs INSUREBENCH_PRIVATE_SEED secret)"
+        default: "dev"
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      INSUREBENCH_PRIVATE_SEED: ${{ secrets.INSUREBENCH_PRIVATE_SEED }}
+      BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e ".[agents]"
+      - name: Check key
+        run: test -n "$OPENROUTER_API_KEY" || (echo "OPENROUTER_API_KEY secret is not set" && exit 1)
+      - name: Regenerate test split from private seed
+        if: ${{ inputs.split == 'test' }}
+        run: |
+          test -n "$INSUREBENCH_PRIVATE_SEED" || (echo "INSUREBENCH_PRIVATE_SEED secret required for test split" && exit 1)
+          python -m insurebench build-data
+          python scripts/fetch_imr.py && python scripts/fetch_icd10cm.py
+      - name: Estimate
+        run: python -m insurebench estimate --suites "${{ inputs.suites }}" --models "${{ inputs.models }}" --harnesses "${{ inputs.harnesses }}" --split "${{ inputs.split }}" --k "${{ inputs.k }}"
+      - name: Sweep
+        run: python -m insurebench sweep --suites "${{ inputs.suites }}" --models "${{ inputs.models }}" --harnesses "${{ inputs.harnesses }}" --split "${{ inputs.split }}" --k "${{ inputs.k }}" --max-usd "${{ inputs.max_usd }}"
+      - name: Report
+        run: python -m insurebench report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sweep-results-${{ github.run_id }}
+          path: |
+            results/runs/
+            results/leaderboard.json
+      - name: Publish to Vercel Blob
+        if: ${{ env.BLOB_READ_WRITE_TOKEN != '' }}
+        working-directory: web
+        run: npm install --no-audit --no-fund && node scripts/upload-blob.mjs ../results/leaderboard.json
+      - name: Commit results (redeploys Vercel)
+        if: ${{ env.BLOB_READ_WRITE_TOKEN == '' && inputs.split == 'dev' }}
+        run: |
+          git config user.name "insurebench-bot"
+          git config user.email "insurebench-bot@users.noreply.github.com"
+          git add results/leaderboard.json web/data/leaderboard.json results/runs/*/summary.json results/runs/*__dev/results.jsonl site/index.html
+          git commit -m "Update leaderboard from sweep ${{ github.run_id }}" || echo "nothing to commit"
+          git push

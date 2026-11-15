@@ -1,0 +1,1181 @@
+{
+ "source": "https://huggingface.co/datasets/snorkelai/Multi-Turn-Insurance-Underwriting/resolve/main/data/train-00000-of-00001.parquet",
+ "license": "apache-2.0",
+ "retrieved": "2026-11-15",
+ "rows": 380,
+ "columns": [
+  "primary id",
+  "company task id",
+  "assistant model name",
+  "task",
+  "trace",
+  "reference answer",
+  "correct",
+  "company name",
+  "annual revenue",
+  "number of employees",
+  "total payroll",
+  "number of vehicles",
+  "building construction",
+  "state",
+  "company description",
+  "lob"
+ ],
+ "sample": [
+  {
+   "primary id": 0,
+   "company task id": 1097,
+   "assistant model name": "o3",
+   "task": "Product Recommendations",
+   "trace": [
+    {
+     "additional_kwargs": "{}",
+     "content": "Would you mind finding out which other insurance products might be suitable for this company?",
+     "id": "9510799c-cccc-43ac-ac39-9ed402d22f35",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Sure, I can help with that.  \n\n1. What industry or type of business is the company in (e.g., retail clothing store, metal-parts manufacturer, restaurant, etc.)?  \n2. Which insurance products (lines of business) do they already purchase from us, if any?",
+     "id": "6f73a76f-e008-44bb-9bd2-29f9b8817983",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Two-year college, associate degrees and certificates.",
+     "id": "d9eb5f4b-4f31-4e51-b148-3825409d7877",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Thank you. Which lines of business does the college already have with us (e.g., Property, General Liability, Workers\u2019 Compensation, Commercial Auto, Cyber, Professional Liability, etc.)?",
+     "id": "ecded222-0219-40bc-a14e-1fd3a1396dce",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "I do not know.",
+     "id": "98dd6a5a-10a2-47cf-a65d-5c1f04f31175",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_pNrs7NKIyKbXv3JT6T9DAHVb', 'function': {'arguments': '{}', 'name': 'get_underwriting_guidelines'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--257a5438-1a75-4257-8b42-12eeeb162b87-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 278, 'prompt_tokens': 1234, 'total_tokens': 1512, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 256, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWMua7hEoQ0aQJ6w9IlSseCtxC5w', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_underwriting_guidelines', 'args': {}, 'id': 'call_pNrs7NKIyKbXv3JT6T9DAHVb', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1234, 'output_tokens': 278, 'total_tokens': 1512, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 256}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "***General***\nWe write policies for small businesses only. Any business that fails to qualify as a \"small business\" is out of appetite, so we will not write a policy for it.\n\n***Property LOB***\n\nFor property LOB, business classes pertaining to hospitality or leasing are only in appetite if the building construction is sufficiently fire resistive. \nThis means the building construction codes are either Type I or Type II.\n\nSpecifically, this is relevant to the following NAICS codes using the 2022 schema:\n\n531110\tLessors of Residential Buildings and Dwellings\n531120\tLessors of Nonresidential Buildings\n531130\tLessors of Miniwarehouses and Self-Storage Units\n531190\tLessors of Other Real Estate Property\n\n721110\tHotels (except Casino Hotels) and Motels\n721120\tCasino Hotels\n721191\tBed-and-Breakfast Inns\n\n***Policy Limits***\n\nFor most small business policies we recommend a per-occurence limit of $1 million and an aggregate limit of $2 million.\n\nHowever, for cyber liability insurance coverage: Industry, business type, amount, and type of customer data handled determine how much cyber insurance businesses need. \nSpecifically we recommend much higher limits of $3 million per-occurence and $5 million aggregate for cyber LOB for the following NAICS classes:\n\nNAICS code 517: Telecommunications\nNAICS code 518: Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services\nNAICS code 52: Finance and Insurance\nNAICS code 621: Ambulatory Health Care Services\nNAICS code 622310: Specialty Hospitals\nNAICS code 623: Nursing and Residential Care Facilities\nNAICS code 92: Public Administration\n\n***Policy Deductibles***\n\nFor most small business policies we recommend a deductible of $500 across LOBs. \n\nHowever, for auto insurance we generally recommend a $1000 deductible, and for the following NAICS codes we recommend a $5000 deductible:\n\nNAICS code 484: Freight Trucking\nNAICS code 4853: Taxi and Limousine Services\nNAICS code 4854: School and Employee Bus Transportation\nNAICS code 4855: Charter Bus Services\nNAICS code 4871: Scenic and Sightseeing Transportation (Land)\n\n***Auto LOB***\n\nIf our appetite guide for an auto policy indicates \"qualified\", then we determine final appetite according to whether the applicant has over 20 vehicles, in which case we decline because the exposure is too high.\n\n***Worker's Compensation LOB***\n\nIf our appetite guide for a worker's compensation policy indicates \"qualified\", then we determine final appetite according to whether the applicant has a total annual payroll of over $5M, in which case we decline because the exposure is too high.\n",
+     "id": "5cad8429-b36a-43f1-a796-c8d7a5f7cc61",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "FINAL ANSWER:   \n\nSuitable additional insurance products (lines of business) for a small, two-year college that grants associate degrees and certificates typically include:\n\n\u2022 General Liability \u2013 protects against third-party bodily injury or property-damage claims arising out of campus operations.  \n\u2022 Property \u2013 covers buildings, contents, equipment, and business-income/extra-expense exposures such as a fire on campus.  \n\u2022 Educators Professional Liability (Errors & Omissions) \u2013 protects against claims alleging improper academic advice, grading disputes, failure to educate, or discrimination.  \n\u2022 Workers\u2019 Compensation \u2013 required in most states for faculty, staff, and student workers; covers on-the-job injuries.  \n\u2022 Cyber Liability \u2013 colleges collect and store sizable student PII and payment data; coverage would address data-breach costs, extortion, and network-interruption losses.  \n\u2022 Commercial Auto \u2013 if the college owns vans, maintenance trucks, or shuttle buses; covers liability and physical damage.  \n\u2022 Employment Practices Liability \u2013 addresses wrongful-termination, discrimination, or harassment allegations brought by employees or job applicants.  \n\u2022 Umbrella/Excess \u2013 provides higher limits above underlying GL, Auto, and Employers Liability, helpful for premises-liability or athletic-injury suits.  \n\nRationale: Two-year colleges face premises-liability exposures from students and visitors, own instructional equipment and buildings that must be insured for property perils, employ faculty and staff who need workers\u2019 compensation, handle sensitive student data (necessitating cyber), and have unique professional exposures related to educational services. An umbrella gives extra limits once primary policies exhaust. All of these fit standard small-business products All National writes and, absent any disqualifying size or construction factors, are generally in appetite.",
+     "id": "8db71c27-dfe0-4aa0-9011-797c776f4b8c",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    }
+   ],
+   "reference answer": "No other LOBs are in appetite for this company.",
+   "correct": false,
+   "company name": "Central Gateway Community College",
+   "annual revenue": 64000000,
+   "number of employees": 580,
+   "total payroll": 32000000,
+   "number of vehicles": 25,
+   "building construction": "Non-combustible \u2013 Examples included steel columns, beams and deck/floors.",
+   "state": "Texas",
+   "company description": "Central Gateway Community College is a prominent two-year institution in Dallas, Texas, providing associate degrees and technical certificates in a wide range of fields, including health sciences, business studies, and information technology. The college has multiple campuses, modern classrooms, laboratories, vocational workshops, and student housing. It also offers workforce development and continuing education programs through extensive online and in-person classes. Central Gateway owns a shuttle fleet and several maintenance vehicles, and insures its large campus properties and advanced technical equipment.",
+   "lob": "general liability"
+  },
+  {
+   "primary id": 1,
+   "company task id": 1161,
+   "assistant model name": "o3",
+   "task": "Appetite Check",
+   "trace": [
+    {
+     "additional_kwargs": "{}",
+     "content": "Can you see if we want to write this type of LOB for this company?",
+     "id": "7f8064b0-6bb1-4fe6-81ee-9c45abe22f9d",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "To determine whether we want to write that line of business (LOB), I\u2019ll need a bit more detail.\n\n1. Which specific LOB are you considering (e.g., General Liability, Property, Commercial Auto, Workers Comp, etc.)?",
+     "id": "77d582b0-2c5f-40f2-a532-6bf66949d6db",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "General liability.",
+     "id": "809658d8-429e-4157-ae3a-11b3a31cd418",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Thanks. To check if General Liability is in appetite I\u2019ll need a couple of details about the insured:\n\n1. What type of operations does the company perform (brief description of its main products/services)?\n2. What is its approximate annual revenue?\n\nWith those two pieces of information I can compare the risk to our GL guidelines.",
+     "id": "27248210-25f6-4cb3-942b-33dfa4732a76",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Delta HVAC distributes HVAC equipment and accessories.",
+     "id": "b617b99f-114f-4756-8fbe-9ee8affe8d8b",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Thanks. One more item so I can compare to the underwriting guidelines:\n\nWhat is Delta HVAC\u2019s approximate annual revenue (or projected revenue for the coming year)?",
+     "id": "67581ee0-ebb1-4ec6-aaec-3ff342e3c64b",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "$3,700,000.",
+     "id": "ecdb3f5d-b83c-455c-8b75-3823907d0c80",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_7wNNp75ydR6MG0hqOoF8QiGr', 'function': {'arguments': '{}', 'name': 'get_underwriting_guidelines'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--8534a7e3-410d-47f1-b44a-bd9c5a34f1bc-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 86, 'prompt_tokens': 1297, 'total_tokens': 1383, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOLR0HKWHhJUeJfNEpAdqhVJcmZ', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_underwriting_guidelines', 'args': {}, 'id': 'call_7wNNp75ydR6MG0hqOoF8QiGr', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1297, 'output_tokens': 86, 'total_tokens': 1383, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "***General***\nWe write policies for small businesses only. Any business that fails to qualify as a \"small business\" is out of appetite, so we will not write a policy for it.\n\n***Property LOB***\n\nFor property LOB, business classes pertaining to hospitality or leasing are only in appetite if the building construction is sufficiently fire resistive. \nThis means the building construction codes are either Type I or Type II.\n\nSpecifically, this is relevant to the following NAICS codes using the 2022 schema:\n\n531110\tLessors of Residential Buildings and Dwellings\n531120\tLessors of Nonresidential Buildings\n531130\tLessors of Miniwarehouses and Self-Storage Units\n531190\tLessors of Other Real Estate Property\n\n721110\tHotels (except Casino Hotels) and Motels\n721120\tCasino Hotels\n721191\tBed-and-Breakfast Inns\n\n***Policy Limits***\n\nFor most small business policies we recommend a per-occurence limit of $1 million and an aggregate limit of $2 million.\n\nHowever, for cyber liability insurance coverage: Industry, business type, amount, and type of customer data handled determine how much cyber insurance businesses need. \nSpecifically we recommend much higher limits of $3 million per-occurence and $5 million aggregate for cyber LOB for the following NAICS classes:\n\nNAICS code 517: Telecommunications\nNAICS code 518: Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services\nNAICS code 52: Finance and Insurance\nNAICS code 621: Ambulatory Health Care Services\nNAICS code 622310: Specialty Hospitals\nNAICS code 623: Nursing and Residential Care Facilities\nNAICS code 92: Public Administration\n\n***Policy Deductibles***\n\nFor most small business policies we recommend a deductible of $500 across LOBs. \n\nHowever, for auto insurance we generally recommend a $1000 deductible, and for the following NAICS codes we recommend a $5000 deductible:\n\nNAICS code 484: Freight Trucking\nNAICS code 4853: Taxi and Limousine Services\nNAICS code 4854: School and Employee Bus Transportation\nNAICS code 4855: Charter Bus Services\nNAICS code 4871: Scenic and Sightseeing Transportation (Land)\n\n***Auto LOB***\n\nIf our appetite guide for an auto policy indicates \"qualified\", then we determine final appetite according to whether the applicant has over 20 vehicles, in which case we decline because the exposure is too high.\n\n***Worker's Compensation LOB***\n\nIf our appetite guide for a worker's compensation policy indicates \"qualified\", then we determine final appetite according to whether the applicant has a total annual payroll of over $5M, in which case we decline because the exposure is too high.\n",
+     "id": "3ef785bc-3910-4e5c-b401-be10be8c8f31",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_mLMDl5YsiTGFjriMEKZp3YjC', 'function': {'arguments': '{}', 'name': 'list_tables'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--16d2f24d-2b7c-4635-9f18-daffe1e4cc22-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 83, 'prompt_tokens': 1895, 'total_tokens': 1978, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1280}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOOmDs0agl3i5gsWDLxUkw0tMs2', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'list_tables', 'args': {}, 'id': 'call_mLMDl5YsiTGFjriMEKZp3YjC', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1895, 'output_tokens': 83, 'total_tokens': 1978, 'input_token_details': {'audio': 0, 'cache_read': 1280}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[\"appetite_guide\", \"lobs\", \"naics\", \"naics_2012_2017\", \"naics_2022_2017\", \"naics_2digit\", \"small_business_definition\", \"states\"]",
+     "id": "c4ab0efa-8fc3-4d5f-9bd6-50a7e682d0b5",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_H51ln1syQfV67mLoAk2UuLd6', 'function': {'arguments': '{\"table_name\":\"small_business_definition\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--02bcefc8-40dd-4571-be84-fa573e89979a-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 21, 'prompt_tokens': 1968, 'total_tokens': 1989, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1152}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOSHFXUIOD8JjJeCmHPkeNISfDY', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'small_business_definition'}, 'id': 'call_H51ln1syQfV67mLoAk2UuLd6', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1968, 'output_tokens': 21, 'total_tokens': 1989, 'input_token_details': {'audio': 0, 'cache_read': 1152}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"NAICS Codes\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"Size Standards in millions of dollars\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"Size standards in number of employees\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "3a076c9a-f7b7-4a29-bf20-06374a31cdbb",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_WigJQeLVpUNWTy36A8fVBQuF', 'function': {'arguments': '{\"query\":\"SELECT code, description FROM naics WHERE description LIKE \\'%Air-Conditioning%\\' LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--10fa0785-d277-40e2-9cef-3b4f3ecd8805-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 106, 'prompt_tokens': 2166, 'total_tokens': 2272, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1280}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOTDd2qUpNYi7TgkgtPXjwXXOGL', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT code, description FROM naics WHERE description LIKE '%Air-Conditioning%' LIMIT 20;\"}, 'id': 'call_WigJQeLVpUNWTy36A8fVBQuF', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2166, 'output_tokens': 106, 'total_tokens': 2272, 'input_token_details': {'audio': 0, 'cache_read': 1280}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"Code\": 221330, \"Description\": \"Steam and Air-Conditioning Supply: This industry comprises establishments primarily engaged in providing steam, heated air, or cooled air.  The steam distribution may be through mains.\"}, {\"Code\": 238220, \"Description\": \"Plumbing, Heating, and Air-Conditioning Contractors: This industry comprises establishments primarily engaged in installing and servicing plumbing, heating, and air-conditioning equipment.  Contractors in this industry may provide both parts and labor when performing work.  The work performed may include new work, additions, alterations, maintenance, and repairs.\\n\\nIllustrative Examples:\\n\\nCooling tower installation\\nHeating, ventilation, and air-conditioning (HVAC) contractors\\nDuct work (e.g., cooling, dust collection, exhaust, heating, ventilation) installation\\nLawn sprinkler system installation\\nFire sprinkler system installation\\nMechanical contractors\\nFireplace, natural gas, installation\\nRefrigeration system (e.g., commercial, industrial, scientific) installation\\nFurnace installation\\nSewer hookup and connection, building\"}, {\"Code\": 333415, \"Description\": \"Air-Conditioning and Warm Air Heating Equipment and Commercial and Industrial Refrigeration Equipment Manufacturing: This U.S. industry comprises establishments primarily engaged in (1) manufacturing air-conditioning (except motor vehicle) and warm air furnace equipment and/or (2) manufacturing commercial and industrial refrigeration and freezer equipment.\\n\\nIllustrative Examples:\\n\\nAir-conditioning and warm air heating combination units manufacturing\\nAir-conditioning compressors (except motor vehicle) manufacturing\\nAir-conditioning condensers and condensing units manufacturing\\nDehumidifiers (except portable electric) manufacturing\\nHeat pumps manufacturing\\nHumidifying equipment (except portable) manufacturing\\nRefrigerated counter and display cases manufacturing\\nRefrigerated drinking fountains manufacturing\\nSnow making machinery manufacturing\\nSoda fountain cooling and dispensing equipment manufacturing\"}, {\"Code\": 333998, \"Description\": \"All Other Miscellaneous General Purpose Machinery Manufacturing: This U.S. industry comprises establishments primarily engaged in manufacturing general purpose machinery (except ventilating, heating, air-conditioning, and commercial refrigeration equipment; metalworking machinery; engines, turbines, and power transmission equipment; pumps and compressors; material handling equipment; power-driven handtools; welding and soldering equipment; packaging machinery; industrial process furnaces and ovens; fluid power cylinders and actuators; and fluid power pumps and motors).\\n\\nIllustrative Examples:\\n\\nAutomatic fire sprinkler systems manufacturing\\nBaling machinery (e.g., paper, scrap metal) manufacturing\\nBridge and gate lifting machinery manufacturing\\nCentrifuges, industrial and laboratory-type, manufacturing\\nCremating ovens manufacturing\\nGeneral purpose-type sieves and screening equipment manufacturing\\nHydraulic and pneumatic jacks manufacturing\\nIndustrial and general purpose-type filters (except internal combustion engine, warm air furnace) manufacturing\\nScales and balances manufacturing\"}, {\"Code\": 334512, \"Description\": \"Automatic Environmental Control Manufacturing for Residential, Commercial, and Appliance Use: This U.S. industry comprises establishments primarily engaged in manufacturing automatic controls and regulators for applications, such as heating, air-conditioning, refrigeration, and appliances.\"}, {\"Code\": 336390, \"Description\": \"Other Motor Vehicle Parts Manufacturing: This industry comprises establishments primarily engaged in manufacturing and/or rebuilding motor vehicle parts and accessories (except motor vehicle gasoline engines and engine parts, motor vehicle electrical and electronic equipment, motor vehicle steering and suspension components, motor vehicle brake systems, motor vehicle transmissions and power train parts, motor vehicle seating and interior trim, and motor vehicle stampings).\\n\\nIllustrative Examples:\\n\\nAir bag assemblies manufacturing\\nAir-conditioners, motor vehicle, manufacturing\\nAir filters, automotive, truck, and bus, manufacturing\\nRadiators and cores manufacturing\\nCatalytic converters, engine exhaust, automotive, truck, and bus, manufacturing\\nCompressors, motor vehicle air-conditioning, manufacturing\\nMufflers and resonators, motor vehicle, manufacturing\\nWheels (i.e., rims), automotive, truck, and bus, manufacturing\"}, {\"Code\": 423730, \"Description\": \"Warm Air Heating and Air-Conditioning Equipment and Supplies Merchant Wholesalers: This industry comprises establishments primarily engaged in the merchant wholesale distribution of warm air heating and air-conditioning equipment and supplies.\\n\\nIllustrative Examples:\\n\\nAir pollution control equipment and supplies merchant wholesalers\\nNonportable electric baseboard heaters merchant wholesalers\\nAir-conditioning equipment (except room units) merchant wholesalers\\nWarm air central heating equipment merchant wholesalers\\nAutomotive air-conditioners merchant wholesalers\\nDuctless heating and air-conditioning system equipment merchant wholesalers\"}, {\"Code\": 811198, \"Description\": \"All Other Automotive Repair and Maintenance: This U.S. industry comprises establishments primarily engaged in providing automotive repair and maintenance services (except mechanical and electrical repair and maintenance; body, paint, interior, and glass repair; motor oil change and lubrication; and car washing) for automotive vehicles, such as passenger cars, trucks, and vans, and all trailers.\\n\\nIllustrative Examples:\\n\\nAutomotive air-conditioning repair shops\\nAutomotive tire repair (except retreading) shops\\nAutomotive rustproofing and undercoating shops\"}]",
+     "id": "672ce1a1-fa9e-41b9-91f1-3cc7db7fb020",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_TjZ12Is7A0tevZGYMXmaz1K6', 'function': {'arguments': '{\"query\":\"SELECT * FROM small_business_definition WHERE \\\\\"NAICS Codes\\\\\"=423730;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--e30c21fc-9576-4024-ad8f-6c4e34a5e595-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 102, 'prompt_tokens': 3259, 'total_tokens': 3361, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOVLDA6TAVVPBIYXoLn1GO0HqH8', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': 'SELECT * FROM small_business_definition WHERE \"NAICS Codes\"=423730;'}, 'id': 'call_TjZ12Is7A0tevZGYMXmaz1K6', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3259, 'output_tokens': 102, 'total_tokens': 3361, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"index\": 573, \"NAICS Codes\": 423730, \"Size Standards in millions of dollars\": null, \"Size standards in number of employees\": 100.0}]",
+     "id": "cc7ee6a6-60bc-48c5-a71f-7689b8255f9f",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_SuLCMeHWFgcqvAiyr8NMG2Cf', 'function': {'arguments': '{\"table_name\":\"appetite_guide\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--f41b3ebb-6733-484f-b964-adcec3903e6a-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 220, 'prompt_tokens': 3341, 'total_tokens': 3561, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 192, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1792}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOa6BNpDPO0sTdOQTS6eJdNMbjk', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'appetite_guide'}, 'id': 'call_SuLCMeHWFgcqvAiyr8NMG2Cf', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3341, 'output_tokens': 220, 'total_tokens': 3561, 'input_token_details': {'audio': 0, 'cache_read': 1792}, 'output_token_details': {'audio': 0, 'reasoning': 192}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"naics\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"state\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"lob\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 4, \"name\": \"appetite\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 5, \"name\": \"naics_2digit\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "ea4f276f-7b66-479e-8719-763a88b7d2a5",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_sRFhwAAm7xRDgk7mrcPQlmEP', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE naics=423730 and lob=\\'General Liability\\' LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--b94e45f0-b517-405f-9134-7faf8b050870-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 38, 'prompt_tokens': 3610, 'total_tokens': 3648, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1920}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOhVNyOFQwNdFxiZVEQ9ZLzXuao', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE naics=423730 and lob='General Liability' LIMIT 20;\"}, 'id': 'call_sRFhwAAm7xRDgk7mrcPQlmEP', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3610, 'output_tokens': 38, 'total_tokens': 3648, 'input_token_details': {'audio': 0, 'cache_read': 1920}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[]",
+     "id": "45abaa64-a15a-4c6a-b670-3448a5575622",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_qzqvWoEHACPNyHvfZGa5tebj', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE naics_2digit=42 and lob=\\'General Liability\\' LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--cca5fc1c-ed1d-42fe-8fca-ad9c89e3c150-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 40, 'prompt_tokens': 3660, 'total_tokens': 3700, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1152}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOi4BYKXE9UjJfPLf14DhVpyy7I', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE naics_2digit=42 and lob='General Liability' LIMIT 20;\"}, 'id': 'call_qzqvWoEHACPNyHvfZGa5tebj', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3660, 'output_tokens': 40, 'total_tokens': 3700, 'input_token_details': {'audio': 0, 'cache_read': 1152}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[]",
+     "id": "d676ed6e-abfd-4069-9fe7-b7f78ebe1443",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_HBX0yWFKw1sJUlVa8b3fTqDJ', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE lob=\\'General Liability\\' LIMIT 10;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--dce8d2b5-e805-49c5-9b64-dd0f4c177b96-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 32, 'prompt_tokens': 3712, 'total_tokens': 3744, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1280}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWOkgBLpc46jwkjPiltCm5lMPxOo', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE lob='General Liability' LIMIT 10;\"}, 'id': 'call_HBX0yWFKw1sJUlVa8b3fTqDJ', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3712, 'output_tokens': 32, 'total_tokens': 3744, 'input_token_details': {'audio': 0, 'cache_read': 1280}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[]",
+     "id": "4900801b-75b9-4c86-a76b-0c22dda42f3a",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "FINAL ANSWER:",
+     "id": "8ac065fd-979f-4a7b-a784-6f1943220e6e",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    }
+   ],
+   "reference answer": "Yes, the company is in appetite for that LOB.",
+   "correct": false,
+   "company name": "Delta HVAC Supply",
+   "annual revenue": 3700000,
+   "number of employees": 27,
+   "total payroll": 980000,
+   "number of vehicles": 7,
+   "building construction": "Non-combustible \u2013 Examples included steel columns, beams and deck/floors.",
+   "state": "Georgia",
+   "company description": "Delta HVAC Supply is based in Atlanta and specializes in distributing warm air heating and air-conditioning equipment, including commercial and residential HVAC units, ductless mini-split systems, ductwork, and accessories. Customers include local HVAC contractors, builders, and property management companies. Delta HVAC Supply has a central warehouse and supports same-day deliveries with their own fleet.",
+   "lob": "general liability"
+  },
+  {
+   "primary id": 2,
+   "company task id": 706,
+   "assistant model name": "o3",
+   "task": "Appetite Check",
+   "trace": [
+    {
+     "additional_kwargs": "{}",
+     "content": "Can you check to see if this LOB is something we're looking to cover for this customer?",
+     "id": "1f21f66d-260e-42ff-8a41-b1bfa38f8428",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Sure\u2014first, which specific line of business (LOB) are you asking about for this customer?",
+     "id": "d2e11d02-1454-4838-a26d-905bbea54947",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Auto.",
+     "id": "fc85a3d2-cf6b-4731-b08a-7740943b2716",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "To determine whether the Auto line of business is within appetite, I\u2019ll need two quick pieces of information:\n\n1. What type of business is the customer in (e.g., construction contractor, retail store, restaurant, etc.)?  \n2. How many vehicles (and what types\u2014private passenger cars, light/medium/heavy trucks, etc.) will be scheduled on the policy?\n\nThose details will let me cross-check our auto appetite guidelines accurately.",
+     "id": "69af2cae-7655-436c-a0c2-536e2421cf3e",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "The company rents medical equipment in Florida.",
+     "id": "49195276-b4fb-4792-a7f4-7a700e2d8c30",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_UEbZDMG2bpPwtQLYaTCsSzcK', 'function': {'arguments': '{}', 'name': 'get_underwriting_guidelines'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--fbf515d1-37f1-4347-916b-94e8ef205184-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 22, 'prompt_tokens': 1245, 'total_tokens': 1267, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPAVsUZy6mLqqexsSwsoM5tTyP2', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_underwriting_guidelines', 'args': {}, 'id': 'call_UEbZDMG2bpPwtQLYaTCsSzcK', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1245, 'output_tokens': 22, 'total_tokens': 1267, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "***General***\nWe write policies for small businesses only. Any business that fails to qualify as a \"small business\" is out of appetite, so we will not write a policy for it.\n\n***Property LOB***\n\nFor property LOB, business classes pertaining to hospitality or leasing are only in appetite if the building construction is sufficiently fire resistive. \nThis means the building construction codes are either Type I or Type II.\n\nSpecifically, this is relevant to the following NAICS codes using the 2022 schema:\n\n531110\tLessors of Residential Buildings and Dwellings\n531120\tLessors of Nonresidential Buildings\n531130\tLessors of Miniwarehouses and Self-Storage Units\n531190\tLessors of Other Real Estate Property\n\n721110\tHotels (except Casino Hotels) and Motels\n721120\tCasino Hotels\n721191\tBed-and-Breakfast Inns\n\n***Policy Limits***\n\nFor most small business policies we recommend a per-occurence limit of $1 million and an aggregate limit of $2 million.\n\nHowever, for cyber liability insurance coverage: Industry, business type, amount, and type of customer data handled determine how much cyber insurance businesses need. \nSpecifically we recommend much higher limits of $3 million per-occurence and $5 million aggregate for cyber LOB for the following NAICS classes:\n\nNAICS code 517: Telecommunications\nNAICS code 518: Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services\nNAICS code 52: Finance and Insurance\nNAICS code 621: Ambulatory Health Care Services\nNAICS code 622310: Specialty Hospitals\nNAICS code 623: Nursing and Residential Care Facilities\nNAICS code 92: Public Administration\n\n***Policy Deductibles***\n\nFor most small business policies we recommend a deductible of $500 across LOBs. \n\nHowever, for auto insurance we generally recommend a $1000 deductible, and for the following NAICS codes we recommend a $5000 deductible:\n\nNAICS code 484: Freight Trucking\nNAICS code 4853: Taxi and Limousine Services\nNAICS code 4854: School and Employee Bus Transportation\nNAICS code 4855: Charter Bus Services\nNAICS code 4871: Scenic and Sightseeing Transportation (Land)\n\n***Auto LOB***\n\nIf our appetite guide for an auto policy indicates \"qualified\", then we determine final appetite according to whether the applicant has over 20 vehicles, in which case we decline because the exposure is too high.\n\n***Worker's Compensation LOB***\n\nIf our appetite guide for a worker's compensation policy indicates \"qualified\", then we determine final appetite according to whether the applicant has a total annual payroll of over $5M, in which case we decline because the exposure is too high.\n",
+     "id": "b238c0f5-25db-42a0-8375-61fc7fb6f23c",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_nuS9sjUlKHusqseXoMbAyXtB', 'function': {'arguments': '{}', 'name': 'list_tables'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--345bdf98-9e7a-4bae-b255-13b13d307a0a-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 83, 'prompt_tokens': 1843, 'total_tokens': 1926, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPCXuiIhk71QKHY40vUva11hqEh', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'list_tables', 'args': {}, 'id': 'call_nuS9sjUlKHusqseXoMbAyXtB', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1843, 'output_tokens': 83, 'total_tokens': 1926, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[\"appetite_guide\", \"lobs\", \"naics\", \"naics_2012_2017\", \"naics_2022_2017\", \"naics_2digit\", \"small_business_definition\", \"states\"]",
+     "id": "28f404b3-f6c1-4f18-b6ea-1923ea318ef0",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_bQ8xy1IzvG4f4CV6txyI7ihs', 'function': {'arguments': '{\"table_name\":\"appetite_guide\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--2f6cd752-c7d5-4300-9bff-14252e1adffe-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 22, 'prompt_tokens': 1916, 'total_tokens': 1938, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPFVOwLJtyXxwRLvmBICRzMoLoa', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'appetite_guide'}, 'id': 'call_bQ8xy1IzvG4f4CV6txyI7ihs', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1916, 'output_tokens': 22, 'total_tokens': 1938, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"naics\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"state\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"lob\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 4, \"name\": \"appetite\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 5, \"name\": \"naics_2digit\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "609cb12a-8022-4169-a515-358695528399",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_WmN2uSP0z2Wk9TomATrNbHHn', 'function': {'arguments': '{\"table_name\":\"naics\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--98a9db89-a0ab-4f08-854a-5c2af863d77c-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 20, 'prompt_tokens': 2185, 'total_tokens': 2205, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPHvb2UwiB1JJ1vGp7ZlhE8Zjoo', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'naics'}, 'id': 'call_WmN2uSP0z2Wk9TomATrNbHHn', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2185, 'output_tokens': 20, 'total_tokens': 2205, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"Code\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"Title\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"Description\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "68123475-8fb9-4b16-8845-6f3bc140a181",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_BKUvOmYmTy290UMnB4Nr0shP', 'function': {'arguments': '{\"query\":\"SELECT Code, Title FROM naics WHERE Title LIKE \\'%Medical%\\' OR Title LIKE \\'%Health%\\' OR Title LIKE \\'%Home Health%\\' OR Title LIKE \\'%Equipment Rental%\\';\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--32313823-0dd4-4a5b-b881-5f4ae082d532-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 120, 'prompt_tokens': 2370, 'total_tokens': 2490, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPI6HsmFCadtbrFr9UKMZVJ9F9F', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT Code, Title FROM naics WHERE Title LIKE '%Medical%' OR Title LIKE '%Health%' OR Title LIKE '%Home Health%' OR Title LIKE '%Equipment Rental%';\"}, 'id': 'call_BKUvOmYmTy290UMnB4Nr0shP', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2370, 'output_tokens': 120, 'total_tokens': 2490, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"Code\": 334510, \"Title\": \"Electromedical and Electrotherapeutic Apparatus Manufacturing\"}, {\"Code\": 339112, \"Title\": \"Surgical and Medical Instrument Manufacturing\"}, {\"Code\": 423450, \"Title\": \"Medical, Dental, and Hospital Equipment and Supplies Merchant Wholesalers\"}, {\"Code\": 456191, \"Title\": \"Food (Health) Supplement Retailers\"}, {\"Code\": 456199, \"Title\": \"All Other Health and Personal Care Retailers\"}, {\"Code\": 524114, \"Title\": \"Direct Health and Medical Insurance Carriers\"}, {\"Code\": 524128, \"Title\": \"Other Direct Insurance (except Life, Health, and Medical) Carriers\"}, {\"Code\": 525120, \"Title\": \"Health and Welfare Funds\"}, {\"Code\": 532283, \"Title\": \"Home Health Equipment Rental\"}, {\"Code\": 532411, \"Title\": \"Commercial Air, Rail, and Water Transportation Equipment Rental and Leasing\"}, {\"Code\": 532412, \"Title\": \"Construction, Mining, and Forestry Machinery and Equipment Rental and Leasing\"}, {\"Code\": 532420, \"Title\": \"Office Machinery and Equipment Rental and Leasing\"}, {\"Code\": 532490, \"Title\": \"Other Commercial and Industrial Machinery and Equipment Rental and Leasing\"}, {\"Code\": 621111, \"Title\": \"Offices of Physicians (except Mental Health Specialists)\"}, {\"Code\": 621112, \"Title\": \"Offices of Physicians, Mental Health Specialists\"}, {\"Code\": 621330, \"Title\": \"Offices of Mental Health Practitioners (except Physicians)\"}, {\"Code\": 621399, \"Title\": \"Offices of All Other Miscellaneous Health Practitioners\"}, {\"Code\": 621420, \"Title\": \"Outpatient Mental Health and Substance Abuse Centers\"}, {\"Code\": 621491, \"Title\": \"HMO Medical Centers\"}, {\"Code\": 621511, \"Title\": \"Medical Laboratories\"}, {\"Code\": 621610, \"Title\": \"Home Health Care Services\"}, {\"Code\": 621999, \"Title\": \"All Other Miscellaneous Ambulatory Health Care Services\"}, {\"Code\": 622110, \"Title\": \"General Medical and Surgical Hospitals\"}, {\"Code\": 623220, \"Title\": \"Residential Mental Health and Substance Abuse Facilities\"}, {\"Code\": 813212, \"Title\": \"Voluntary Health Organizations\"}, {\"Code\": 923120, \"Title\": \"Administration of Public Health Programs\"}, {\"Code\": 923130, \"Title\": \"Administration of Human Resource Programs (except Education, Public Health, and Veterans' Affairs Programs)\"}]",
+     "id": "75502dba-1699-4262-be6c-c31a3c6300a7",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Need two quick clarifications to confirm appetite for an Auto policy:\n\n1. About how many vehicles (and general types\u2014e.g., cars vs. light trucks) will be on the policy?  \n2. Do you have the business\u2019s NAICS code handy?  (If not, can you confirm that the core operation is renting home-health/medical equipment rather than broader industrial equipment?)",
+     "id": "586c47b9-e25a-4c2e-9540-f4a6b86d0ff2",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "18 vehicles, primarily for medical equipment rentals.",
+     "id": "2068a527-b3dc-45bc-9607-90750675da26",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_77gN2dvUOU1Bdn60cgxl6I4u', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE naics = 532283 AND state = \\'FL\\' AND lob = \\'Auto\\';\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--927d27ee-8bc0-4c3e-b7e3-baed7374ba88-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 239, 'prompt_tokens': 3078, 'total_tokens': 3317, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 192, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1792}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPUPBPGB0pg7gDK1z51t28kcuKE', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE naics = 532283 AND state = 'FL' AND lob = 'Auto';\"}, 'id': 'call_77gN2dvUOU1Bdn60cgxl6I4u', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3078, 'output_tokens': 239, 'total_tokens': 3317, 'input_token_details': {'audio': 0, 'cache_read': 1792}, 'output_token_details': {'audio': 0, 'reasoning': 192}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[]",
+     "id": "f6614c88-2363-4948-b2cb-ff2d6d08aeec",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_mvOf7zAJAyuaYPFJLvKg4ux7', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE naics_2digit = 53 AND state = \\'FL\\' AND lob = \\'Auto\\';\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--8e464a27-e206-41ee-b273-e988d9aa11b6-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 43, 'prompt_tokens': 3131, 'total_tokens': 3174, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPZlYO5mdGE027pAIPpgrkcOwaU', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE naics_2digit = 53 AND state = 'FL' AND lob = 'Auto';\"}, 'id': 'call_mvOf7zAJAyuaYPFJLvKg4ux7', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3131, 'output_tokens': 43, 'total_tokens': 3174, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[]",
+     "id": "1951a20d-8e1b-4450-8d1a-0e14dfd88d6a",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_LAdF2EAy2DTogoC9ovwIC07o', 'function': {'arguments': '{\"query\":\"SELECT DISTINCT lob FROM appetite_guide LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--b7c2f877-b06f-48d7-9540-4084c802fbdc-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 161, 'prompt_tokens': 3186, 'total_tokens': 3347, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 128, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPa9LvFgxtRkgOpJDzHyXtEgzcu', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': 'SELECT DISTINCT lob FROM appetite_guide LIMIT 20;'}, 'id': 'call_LAdF2EAy2DTogoC9ovwIC07o', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3186, 'output_tokens': 161, 'total_tokens': 3347, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 128}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"lob\": \"workers compensation\"}, {\"lob\": \"property\"}, {\"lob\": \"general liability\"}, {\"lob\": \"auto\"}, {\"lob\": \"cyber\"}, {\"lob\": \"bop\"}]",
+     "id": "e8606522-c56e-4c92-8932-42e0426d1ec6",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_pO3MeKVO1R37DWo0FSVfbhFp', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE lob = \\'auto\\' AND state = \\'FL\\' AND appetite IS NOT NULL LIMIT 10;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--c444ed8d-ad92-4897-991c-e2711ff87142-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 43, 'prompt_tokens': 3266, 'total_tokens': 3309, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPeQILe2STegObQsE9iMmJIESA4', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE lob = 'auto' AND state = 'FL' AND appetite IS NOT NULL LIMIT 10;\"}, 'id': 'call_pO3MeKVO1R37DWo0FSVfbhFp', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3266, 'output_tokens': 43, 'total_tokens': 3309, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"index\": 57, \"naics\": 111110, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 363, \"naics\": 111120, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 669, \"naics\": 111130, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 975, \"naics\": 111140, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 1281, \"naics\": 111150, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 1587, \"naics\": 111160, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 1893, \"naics\": 111191, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 2199, \"naics\": 111199, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 2505, \"naics\": 111211, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}, {\"index\": 2811, \"naics\": 111219, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 11}]",
+     "id": "8a17c3d9-a3ee-4be5-bb91-768259ea9630",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_Yho8ksE7ssSO517GcWllKtpf', 'function': {'arguments': '{\"query\":\"SELECT * FROM appetite_guide WHERE naics = 532283 AND lob = \\'auto\\' LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--e39b1f94-33f6-4839-bb6f-13ad2b4c8b1e-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 109, 'prompt_tokens': 3757, 'total_tokens': 3866, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 2304}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPfKogI9J7OU2ZxoDS43fk983mV', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT * FROM appetite_guide WHERE naics = 532283 AND lob = 'auto' LIMIT 20;\"}, 'id': 'call_Yho8ksE7ssSO517GcWllKtpf', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 3757, 'output_tokens': 109, 'total_tokens': 3866, 'input_token_details': {'audio': 0, 'cache_read': 2304}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"index\": 225831, \"naics\": 532283, \"state\": \"AL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225837, \"naics\": 532283, \"state\": \"AK\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225843, \"naics\": 532283, \"state\": \"AZ\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225849, \"naics\": 532283, \"state\": \"AR\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225855, \"naics\": 532283, \"state\": \"CA\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225861, \"naics\": 532283, \"state\": \"CO\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225867, \"naics\": 532283, \"state\": \"CT\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225873, \"naics\": 532283, \"state\": \"DE\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225879, \"naics\": 532283, \"state\": \"DC\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225885, \"naics\": 532283, \"state\": \"FL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225891, \"naics\": 532283, \"state\": \"GA\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225897, \"naics\": 532283, \"state\": \"HI\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225903, \"naics\": 532283, \"state\": \"ID\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225909, \"naics\": 532283, \"state\": \"IL\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225915, \"naics\": 532283, \"state\": \"IN\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225921, \"naics\": 532283, \"state\": \"IA\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225927, \"naics\": 532283, \"state\": \"KS\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225933, \"naics\": 532283, \"state\": \"KY\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225939, \"naics\": 532283, \"state\": \"LA\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}, {\"index\": 225945, \"naics\": 532283, \"state\": \"ME\", \"lob\": \"auto\", \"appetite\": \"Yes\", \"naics_2digit\": 53}]",
+     "id": "6005f8b5-97eb-4d95-a21e-8b592b4be07d",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_qQ64RUbg0L5NLUryUe4omACq', 'function': {'arguments': '{\"table_name\":\"small_business_definition\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--64b7a82a-53a5-4ecd-8e0a-ed94a8e01aa1-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 219, 'prompt_tokens': 4688, 'total_tokens': 4907, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 192, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 2176}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPknNJejU9Mi9XpUrOXPLBGmTgC', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'small_business_definition'}, 'id': 'call_qQ64RUbg0L5NLUryUe4omACq', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 4688, 'output_tokens': 219, 'total_tokens': 4907, 'input_token_details': {'audio': 0, 'cache_read': 2176}, 'output_token_details': {'audio': 0, 'reasoning': 192}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"NAICS Codes\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"Size Standards in millions of dollars\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"Size standards in number of employees\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "0b955a6b-93f6-4081-a2c5-0da73676ecba",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_c0AVTPnmLjYbTsvFbdtmsNTj', 'function': {'arguments': '{\"query\":\"SELECT * FROM small_business_definition WHERE \\\\\"NAICS Codes\\\\\" = 532283;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--93cdb386-2d20-446f-9c11-c7e7a2cb6716-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 33, 'prompt_tokens': 4886, 'total_tokens': 4919, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1152}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPoWl4ie0udHvFbNgadhQP0jPq4', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': 'SELECT * FROM small_business_definition WHERE \"NAICS Codes\" = 532283;'}, 'id': 'call_c0AVTPnmLjYbTsvFbdtmsNTj', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 4886, 'output_tokens': 33, 'total_tokens': 4919, 'input_token_details': {'audio': 0, 'cache_read': 1152}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[]",
+     "id": "e5f79312-b43f-478d-8f30-27aab68bd0b2",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_YIeq6NN1vAJXeuzNg4GRsIZv', 'function': {'arguments': '{\"query\":\"SELECT * FROM small_business_definition WHERE \\\\\"NAICS Codes\\\\\" LIKE \\'532%\\';\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--407ce250-b0da-486d-9c06-8d7873cc172d-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 33, 'prompt_tokens': 4931, 'total_tokens': 4964, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWPqal24FrIRKk8fAYarOWc3WjQ5', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': 'SELECT * FROM small_business_definition WHERE \"NAICS Codes\" LIKE \\'532%\\';'}, 'id': 'call_YIeq6NN1vAJXeuzNg4GRsIZv', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 4931, 'output_tokens': 33, 'total_tokens': 4964, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"index\": 870, \"NAICS Codes\": 532111, \"Size Standards in millions of dollars\": 38.5, \"Size standards in number of employees\": null}, {\"index\": 871, \"NAICS Codes\": 532112, \"Size Standards in millions of dollars\": 38.5, \"Size standards in number of employees\": null}, {\"index\": 872, \"NAICS Codes\": 532120, \"Size Standards in millions of dollars\": 38.5, \"Size standards in number of employees\": null}, {\"index\": 873, \"NAICS Codes\": 532210, \"Size Standards in millions of dollars\": 38.5, \"Size standards in number of employees\": null}, {\"index\": 874, \"NAICS Codes\": 532220, \"Size Standards in millions of dollars\": 20.5, \"Size standards in number of employees\": null}, {\"index\": 875, \"NAICS Codes\": 532230, \"Size Standards in millions of dollars\": 27.5, \"Size standards in number of employees\": null}, {\"index\": 876, \"NAICS Codes\": 532291, \"Size Standards in millions of dollars\": 32.5, \"Size standards in number of employees\": null}, {\"index\": 877, \"NAICS Codes\": 532292, \"Size Standards in millions of dollars\": 7.5, \"Size standards in number of employees\": null}, {\"index\": 878, \"NAICS Codes\": 532299, \"Size Standards in millions of dollars\": 7.5, \"Size standards in number of employees\": null}, {\"index\": 879, \"NAICS Codes\": 532310, \"Size Standards in millions of dollars\": 7.5, \"Size standards in number of employees\": null}, {\"index\": 880, \"NAICS Codes\": 532411, \"Size Standards in millions of dollars\": 32.5, \"Size standards in number of employees\": null}, {\"index\": 881, \"NAICS Codes\": 532412, \"Size Standards in millions of dollars\": 32.5, \"Size standards in number of employees\": null}, {\"index\": 882, \"NAICS Codes\": 532420, \"Size Standards in millions of dollars\": 32.5, \"Size standards in number of employees\": null}, {\"index\": 883, \"NAICS Codes\": 532490, \"Size Standards in millions of dollars\": 32.5, \"Size standards in number of employees\": null}]",
+     "id": "414e70a2-26aa-458e-85c5-6e1d584ef2b1",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "FINAL ANSWER: IN APPETITE.  \n\nRationale:  \n\u2022 The customer\u2019s NAICS class\u2014532283 (Home Health Equipment Rental)\u2014is marked \u201cYes\u201d for Auto appetite in Florida in the appetite_guide table.  \n\u2022 They operate 18 vehicles. Our Auto underwriting guideline declines only when an otherwise-qualified risk runs more than 20 vehicles, so 18 falls within the allowable range.  \n\nTherefore, All National would welcome offering an Auto policy for this medical-equipment-rental firm.",
+     "id": "cd8f44b5-5e60-4f8e-8863-c768f7934009",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    }
+   ],
+   "reference answer": "Yes, the company is in appetite for that LOB.",
+   "correct": true,
+   "company name": "MedEase Equipment Rentals",
+   "annual revenue": 27800000,
+   "number of employees": 54,
+   "total payroll": 3900000,
+   "number of vehicles": 18,
+   "building construction": "Non-combustible \u2013 Examples included steel columns, beams and deck/floors.",
+   "state": "Florida",
+   "company description": "MedEase Equipment Rentals serves South Florida by providing home health equipment rentals for patients recovering from surgery, those with chronic illnesses, and the elderly. Their offerings include wheelchairs, powered mobility scooters, adjustable hospital beds, CPAP machines, oxygen concentrators, and more. They provide delivery, setup, and maintenance services for medical equipment, and offer 24/7 phone support for clients and caregivers. MedEase works closely with hospitals and home health agencies to ensure seamless transitions for patients returning home.",
+   "lob": "auto"
+  },
+  {
+   "primary id": 3,
+   "company task id": 1243,
+   "assistant model name": "o3",
+   "task": "Small Business Elibility Check",
+   "trace": [
+    {
+     "additional_kwargs": "{}",
+     "content": "Can you confirm whether this company is considered a small business for our purposes?",
+     "id": "d3186c93-2bdd-4003-b939-e44064926ece",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "To determine whether the account meets All National\u2019s \u201csmall business\u201d definition I\u2019ll need one key piece of information:\n\n\u2022 What is the company\u2019s most recent annual revenue (or gross sales)?",
+     "id": "5b1e1222-2b42-4189-bbab-98a753734755",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "12000000.",
+     "id": "5192c476-4303-4bb0-a2ca-4c79138fad9c",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_S1Zb41XsvEE8IvJymdpilYR3', 'function': {'arguments': '{}', 'name': 'get_underwriting_guidelines'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--85f064bd-cb29-49aa-86c9-ee5625152e63-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 22, 'prompt_tokens': 1152, 'total_tokens': 1174, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQIhjNbruyUdzxznFMlI8pdpZmo', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_underwriting_guidelines', 'args': {}, 'id': 'call_S1Zb41XsvEE8IvJymdpilYR3', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1152, 'output_tokens': 22, 'total_tokens': 1174, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "***General***\nWe write policies for small businesses only. Any business that fails to qualify as a \"small business\" is out of appetite, so we will not write a policy for it.\n\n***Property LOB***\n\nFor property LOB, business classes pertaining to hospitality or leasing are only in appetite if the building construction is sufficiently fire resistive. \nThis means the building construction codes are either Type I or Type II.\n\nSpecifically, this is relevant to the following NAICS codes using the 2022 schema:\n\n531110\tLessors of Residential Buildings and Dwellings\n531120\tLessors of Nonresidential Buildings\n531130\tLessors of Miniwarehouses and Self-Storage Units\n531190\tLessors of Other Real Estate Property\n\n721110\tHotels (except Casino Hotels) and Motels\n721120\tCasino Hotels\n721191\tBed-and-Breakfast Inns\n\n***Policy Limits***\n\nFor most small business policies we recommend a per-occurence limit of $1 million and an aggregate limit of $2 million.\n\nHowever, for cyber liability insurance coverage: Industry, business type, amount, and type of customer data handled determine how much cyber insurance businesses need. \nSpecifically we recommend much higher limits of $3 million per-occurence and $5 million aggregate for cyber LOB for the following NAICS classes:\n\nNAICS code 517: Telecommunications\nNAICS code 518: Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services\nNAICS code 52: Finance and Insurance\nNAICS code 621: Ambulatory Health Care Services\nNAICS code 622310: Specialty Hospitals\nNAICS code 623: Nursing and Residential Care Facilities\nNAICS code 92: Public Administration\n\n***Policy Deductibles***\n\nFor most small business policies we recommend a deductible of $500 across LOBs. \n\nHowever, for auto insurance we generally recommend a $1000 deductible, and for the following NAICS codes we recommend a $5000 deductible:\n\nNAICS code 484: Freight Trucking\nNAICS code 4853: Taxi and Limousine Services\nNAICS code 4854: School and Employee Bus Transportation\nNAICS code 4855: Charter Bus Services\nNAICS code 4871: Scenic and Sightseeing Transportation (Land)\n\n***Auto LOB***\n\nIf our appetite guide for an auto policy indicates \"qualified\", then we determine final appetite according to whether the applicant has over 20 vehicles, in which case we decline because the exposure is too high.\n\n***Worker's Compensation LOB***\n\nIf our appetite guide for a worker's compensation policy indicates \"qualified\", then we determine final appetite according to whether the applicant has a total annual payroll of over $5M, in which case we decline because the exposure is too high.\n",
+     "id": "741c7fd8-e6b5-4a5c-910f-70569acb678d",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_wizecpAYDdYGOSornhYfAZPK', 'function': {'arguments': '{}', 'name': 'list_tables'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--201a77a7-a299-4564-9f5c-8e03ee87c0a2-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 83, 'prompt_tokens': 1750, 'total_tokens': 1833, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQLtATMifZ6AxLgPoWfZhRTtv8y', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'list_tables', 'args': {}, 'id': 'call_wizecpAYDdYGOSornhYfAZPK', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1750, 'output_tokens': 83, 'total_tokens': 1833, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[\"appetite_guide\", \"lobs\", \"naics\", \"naics_2012_2017\", \"naics_2022_2017\", \"naics_2digit\", \"small_business_definition\", \"states\"]",
+     "id": "640f29dd-af23-4a31-8a33-9fddb44bdf85",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_EMXllOaZ8jMVj1sCJCivYxgw', 'function': {'arguments': '{\"table_name\":\"small_business_definition\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--aa1e3b34-bc61-42a4-8411-503812516b98-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 21, 'prompt_tokens': 1823, 'total_tokens': 1844, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQO529PU0OTqcj0yRmisbNFtHTW', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'small_business_definition'}, 'id': 'call_EMXllOaZ8jMVj1sCJCivYxgw', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1823, 'output_tokens': 21, 'total_tokens': 1844, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"NAICS Codes\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"Size Standards in millions of dollars\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"Size standards in number of employees\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "917efb1a-74a4-4437-8e60-ca9560baf34b",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "To confirm whether the account counts as a \u201csmall business,\u201d I also need to know the company\u2019s industry classification, since each NAICS code has its own revenue (or employee-count) threshold.\n\nCould you tell me the company\u2019s primary NAICS code (or briefly describe what the business does so I can look up the code)?",
+     "id": "49b66fa9-5aba-49cf-9cc9-4de557b3fdf1",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "FreshFields sells fresh produce via retail stores.",
+     "id": "757915c8-35fd-4d68-9999-c56bfad0c7ab",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_hUn7YGsnlbCr04ULDX5G3pXm', 'function': {'arguments': '{\"table_name\":\"naics\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--5dd498a9-6eb2-49f5-a647-e291e346d912-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 90, 'prompt_tokens': 2107, 'total_tokens': 2197, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 64, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQUWHafHsRNZ40nBJfnOXGJ10y7', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'naics'}, 'id': 'call_hUn7YGsnlbCr04ULDX5G3pXm', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2107, 'output_tokens': 90, 'total_tokens': 2197, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 64}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"Code\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"Title\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"Description\", \"type\": \"TEXT\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "663ec49b-9b30-475c-8c32-3f4f6b1e1cee",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_vyRmTrHkN1I04rswLeTg9PWi', 'function': {'arguments': '{\"query\":\"SELECT Code, Title FROM naics WHERE Title LIKE \\'%fresh%\\' LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--a858e97c-b8df-4e26-a2d8-7f48429a8b83-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 33, 'prompt_tokens': 2292, 'total_tokens': 2325, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQXuxl5TnvUDTo2gkKaHkaLBhSB', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT Code, Title FROM naics WHERE Title LIKE '%fresh%' LIMIT 20;\"}, 'id': 'call_vyRmTrHkN1I04rswLeTg9PWi', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2292, 'output_tokens': 33, 'total_tokens': 2325, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"Code\": 424480, \"Title\": \"Fresh Fruit and Vegetable Merchant Wholesalers\"}]",
+     "id": "1c915f84-f1ae-4004-8638-4ca1986ed241",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_Qpj8hZxKOTuQNOtcwVYnaRIA', 'function': {'arguments': '{\"query\":\"SELECT Code, Title FROM naics WHERE Title LIKE \\'%Fruit%\\' LIMIT 50;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--391af943-c5c2-49ec-bf3a-a3a8bb267d6b-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 39, 'prompt_tokens': 2358, 'total_tokens': 2397, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQZ4tfI8kV8rrAh11Pxqyjby9ib', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT Code, Title FROM naics WHERE Title LIKE '%Fruit%' LIMIT 50;\"}, 'id': 'call_Qpj8hZxKOTuQNOtcwVYnaRIA', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2358, 'output_tokens': 39, 'total_tokens': 2397, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"Code\": 111336, \"Title\": \"Fruit and Tree Nut Combination Farming\"}, {\"Code\": 111339, \"Title\": \"Other Noncitrus Fruit Farming\"}, {\"Code\": 311411, \"Title\": \"Frozen Fruit, Juice, and Vegetable Manufacturing\"}, {\"Code\": 311421, \"Title\": \"Fruit and Vegetable Canning\"}, {\"Code\": 424480, \"Title\": \"Fresh Fruit and Vegetable Merchant Wholesalers\"}, {\"Code\": 445230, \"Title\": \"Fruit and Vegetable Retailers\"}]",
+     "id": "69f09d02-c4a3-4649-9cf0-566eac111313",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_ZrpMbL2Ul9GT2hur6Uq4Z5Ha', 'function': {'arguments': '{\"query\":\"SELECT Code, Title FROM naics WHERE Title LIKE \\'%Vegetable Retail%\\' LIMIT 20;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--bf68b674-d60b-47e5-950e-89eefb932060-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 35, 'prompt_tokens': 2515, 'total_tokens': 2550, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQb0wcbc2a8LnBWULEmMtFUBgk7', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': \"SELECT Code, Title FROM naics WHERE Title LIKE '%Vegetable Retail%' LIMIT 20;\"}, 'id': 'call_ZrpMbL2Ul9GT2hur6Uq4Z5Ha', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2515, 'output_tokens': 35, 'total_tokens': 2550, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"Code\": 445230, \"Title\": \"Fruit and Vegetable Retailers\"}]",
+     "id": "dc07248b-add0-40c5-9812-76487619d30f",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_0eGwfM5ZYJG3gNchgdcmXfui', 'function': {'arguments': '{\"query\":\"SELECT Code, Title FROM naics WHERE Code = 445230;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--a7c8e544-c4cb-4993-bab1-db3c48976585-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 30, 'prompt_tokens': 2580, 'total_tokens': 2610, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQccjgsWrwjVE9RqH0XyaqY4XdX', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': 'SELECT Code, Title FROM naics WHERE Code = 445230;'}, 'id': 'call_0eGwfM5ZYJG3gNchgdcmXfui', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2580, 'output_tokens': 30, 'total_tokens': 2610, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"Code\": 445230, \"Title\": \"Fruit and Vegetable Retailers\"}]",
+     "id": "d1195edd-1288-49ba-82e9-ab04c293afae",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_Ynzpxbh6c4rAf5t3ZjE9JGFn', 'function': {'arguments': '{\"table_name\":\"small_business_definition\"}', 'name': 'get_table_schema'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--ea8526dd-3a04-4ffd-8eb7-32d8126cc97a-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 21, 'prompt_tokens': 2640, 'total_tokens': 2661, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1664}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQdj0woPveu17Mg47DTCuVjTcyS', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_table_schema', 'args': {'table_name': 'small_business_definition'}, 'id': 'call_Ynzpxbh6c4rAf5t3ZjE9JGFn', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2640, 'output_tokens': 21, 'total_tokens': 2661, 'input_token_details': {'audio': 0, 'cache_read': 1664}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"cid\": 0, \"name\": \"index\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 1, \"name\": \"NAICS Codes\", \"type\": \"INTEGER\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 2, \"name\": \"Size Standards in millions of dollars\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}, {\"cid\": 3, \"name\": \"Size standards in number of employees\", \"type\": \"REAL\", \"notnull\": 0, \"dflt_value\": null, \"pk\": 0}]",
+     "id": "aefe9b8d-bf23-4312-9c2b-30b054d161bf",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_FBLVjidkNdjknejtOjHQOfHB', 'function': {'arguments': '{\"query\":\"SELECT * FROM small_business_definition WHERE \\\\\"NAICS Codes\\\\\" = 445230;\"}', 'name': 'read_query'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--74f9ee08-7d0d-476a-81c5-bfc4ad8c8e4d-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 33, 'prompt_tokens': 2838, 'total_tokens': 2871, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1664}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWQeu6Hp4LzparI1Q4oaT9JSrEfp', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'read_query', 'args': {'query': 'SELECT * FROM small_business_definition WHERE \"NAICS Codes\" = 445230;'}, 'id': 'call_FBLVjidkNdjknejtOjHQOfHB', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 2838, 'output_tokens': 33, 'total_tokens': 2871, 'input_token_details': {'audio': 0, 'cache_read': 1664}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "[{\"index\": 652, \"NAICS Codes\": 445230, \"Size Standards in millions of dollars\": 7.5, \"Size standards in number of employees\": null}]",
+     "id": "c71784ef-0112-4e77-9017-2055619c2eca",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "FINAL ANSWER: NOT A SMALL BUSINESS / OUT OF APPETITE.  \n\nRationale  \n\u2022 Primary industry: Fresh produce retailing \u21d2 NAICS 445230 \u201cFruit and Vegetable Retailers.\u201d  \n\u2022 SBA/All-National small-business size standard for NAICS 445230 = $7.5 million in average annual receipts.  \n\u2022 Applicant\u2019s reported annual revenue = $12 million, which exceeds the $7.5 million limit.  \n\nBecause the firm is above the applicable revenue threshold, it does not qualify as a \u201csmall business\u201d for All National\u2019s underwriting purposes, so we must decline the risk.",
+     "id": "73fa2ad9-c5ee-49db-8639-d6151ec11a82",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    }
+   ],
+   "reference answer": "This company does NOT qualify as a small business, it is a large business.",
+   "correct": true,
+   "company name": "FreshFields Produce Markets",
+   "annual revenue": 12000000,
+   "number of employees": 85,
+   "total payroll": 3200000,
+   "number of vehicles": 8,
+   "building construction": "Wood Frame Construction \u2013 Examples include wood or metal stud construction; this type of construction has low assembly fire resistivity.",
+   "state": "Florida",
+   "company description": "FreshFields Produce Markets operates a network of spacious retail produce stores in several cities throughout Florida. Specializing in fresh, locally sourced fruits and vegetables, the company maintains strong partnerships with regional farms. FreshFields offers bulk sales, pre-packed produce boxes, and delivery to restaurants and schools. The operation emphasizes freshness, quality, and customer education through in-store events and nutrition workshops. They maintain cold storage facilities and refrigerated delivery vehicles to ensure product quality.",
+   "lob": "property"
+  },
+  {
+   "primary id": 4,
+   "company task id": 994,
+   "assistant model name": "o3",
+   "task": "Deductibles",
+   "trace": [
+    {
+     "additional_kwargs": "{}",
+     "content": "Can you give me a recommendation on what deductible to set on this LOB for the applicant?",
+     "id": "e475aa85-d837-4119-bc53-689ffd6b75b1",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "To recommend an appropriate deductible, I\u2019ll need a bit more detail about the submission:\n\n1. Which line of business (LOB) are we setting the deductible for (e.g., Property, General Liability, Inland Marine, etc.)?  \n2. What is the key exposure basis for that LOB (for example, total insured property value for Property, or annual gross sales for General Liability)?\n\nWith those two pieces of information I can look up the relevant deductible guidance and make a recommendation.",
+     "id": "70b07240-f491-481c-b4bc-2308d34862c3",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Auto.",
+     "id": "e6b2f53c-e6f6-44f7-9d47-726f08eac579",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Thanks. For the Auto line I\u2019ll need a little more information to zero-in on the appropriate deductible:\n\n1. How many vehicles are you scheduling, and what is their total combined actual cash value (or stated value) if you\u2019re including physical damage coverage?\n2. Are the vehicles primarily private-passenger, light commercial, or heavier / specialized units (e.g., trucks over 20,000 lbs, service trucks, etc.)?\n\nWith those details I can consult the Auto deductible guidelines and give you a specific recommendation.",
+     "id": "68e46a01-fc4b-4dc3-ae3e-eaefa74320d0",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "7 vehicles owned and operated by company.",
+     "id": "9580483d-9a46-48af-91bb-5b85867554ba",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Got it\u2014seven company-owned autos. To recommend the deductible I still need one more data point:\n\nWhat type of autos are they (primarily private-passenger / light commercial versus heavier trucks or specialized units) and approximately what is the total combined value of the seven vehicles?\n\nThat will let me check the Auto deductible guideline tiers and provide a precise recommendation.",
+     "id": "ca327844-ee55-4461-9f29-0b87c34ed87d",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "I do not know.",
+     "id": "8c96ac89-9a6e-4d8f-a0c0-0b7de34b4286",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{'tool_calls': [{'id': 'call_16UrBAww8saXwx6CasNNVgxy', 'function': {'arguments': '{}', 'name': 'get_underwriting_guidelines'}, 'type': 'function'}], 'refusal': None}",
+     "content": "",
+     "id": "run--4056c5de-a960-4d8a-b565-5249353d833b-0",
+     "response_metadata": "{'token_usage': {'completion_tokens': 22, 'prompt_tokens': 1425, 'total_tokens': 1447, 'completion_tokens_details': {'accepted_prediction_tokens': 0, 'audio_tokens': 0, 'reasoning_tokens': 0, 'rejected_prediction_tokens': 0}, 'prompt_tokens_details': {'audio_tokens': 0, 'cached_tokens': 1024}}, 'model_name': 'o3-2025-04-16', 'system_fingerprint': None, 'id': 'chatcmpl-BfWUBGQA4WO2JYuDFwBSO2s5sUACO', 'finish_reason': 'tool_calls', 'logprobs': None}",
+     "role": "assistant",
+     "tool_calls": "[{'name': 'get_underwriting_guidelines', 'args': {}, 'id': 'call_16UrBAww8saXwx6CasNNVgxy', 'type': 'tool_call'}]",
+     "type": "internal assistant",
+     "usage_metadata": "{'input_tokens': 1425, 'output_tokens': 22, 'total_tokens': 1447, 'input_token_details': {'audio': 0, 'cache_read': 1024}, 'output_token_details': {'audio': 0, 'reasoning': 0}}"
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "***General***\nWe write policies for small businesses only. Any business that fails to qualify as a \"small business\" is out of appetite, so we will not write a policy for it.\n\n***Property LOB***\n\nFor property LOB, business classes pertaining to hospitality or leasing are only in appetite if the building construction is sufficiently fire resistive. \nThis means the building construction codes are either Type I or Type II.\n\nSpecifically, this is relevant to the following NAICS codes using the 2022 schema:\n\n531110\tLessors of Residential Buildings and Dwellings\n531120\tLessors of Nonresidential Buildings\n531130\tLessors of Miniwarehouses and Self-Storage Units\n531190\tLessors of Other Real Estate Property\n\n721110\tHotels (except Casino Hotels) and Motels\n721120\tCasino Hotels\n721191\tBed-and-Breakfast Inns\n\n***Policy Limits***\n\nFor most small business policies we recommend a per-occurence limit of $1 million and an aggregate limit of $2 million.\n\nHowever, for cyber liability insurance coverage: Industry, business type, amount, and type of customer data handled determine how much cyber insurance businesses need. \nSpecifically we recommend much higher limits of $3 million per-occurence and $5 million aggregate for cyber LOB for the following NAICS classes:\n\nNAICS code 517: Telecommunications\nNAICS code 518: Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services\nNAICS code 52: Finance and Insurance\nNAICS code 621: Ambulatory Health Care Services\nNAICS code 622310: Specialty Hospitals\nNAICS code 623: Nursing and Residential Care Facilities\nNAICS code 92: Public Administration\n\n***Policy Deductibles***\n\nFor most small business policies we recommend a deductible of $500 across LOBs. \n\nHowever, for auto insurance we generally recommend a $1000 deductible, and for the following NAICS codes we recommend a $5000 deductible:\n\nNAICS code 484: Freight Trucking\nNAICS code 4853: Taxi and Limousine Services\nNAICS code 4854: School and Employee Bus Transportation\nNAICS code 4855: Charter Bus Services\nNAICS code 4871: Scenic and Sightseeing Transportation (Land)\n\n***Auto LOB***\n\nIf our appetite guide for an auto policy indicates \"qualified\", then we determine final appetite according to whether the applicant has over 20 vehicles, in which case we decline because the exposure is too high.\n\n***Worker's Compensation LOB***\n\nIf our appetite guide for a worker's compensation policy indicates \"qualified\", then we determine final appetite according to whether the applicant has a total annual payroll of over $5M, in which case we decline because the exposure is too high.\n",
+     "id": "4d5c09a8-4593-425a-a5e2-e293fb93c441",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "tool",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "To pinpoint the correct deductible I need just one more piece of information:  \n\nWhat is the applicant\u2019s primary industry (or NAICS code)?  \n\nIf they fall into freight-trucking, taxi/limousine, bus, or land sightseeing transportation classes, our guideline bumps the Auto deductible from the standard $1,000 to $5,000. Otherwise we recommend $1,000.",
+     "id": "3ceb5183-7d60-4e64-ab70-0c29e8c08a86",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "Bus charter company.",
+     "id": "d96ecb90-de74-4719-90e8-5666f8c893bf",
+     "response_metadata": "{}",
+     "role": "user",
+     "tool_calls": "",
+     "type": "underwriter",
+     "usage_metadata": ""
+    },
+    {
+     "additional_kwargs": "{}",
+     "content": "FINAL ANSWER: Recommend a $5,000 deductible for the Auto line.  \nRationale: The applicant operates a bus-charter service, which corresponds to NAICS 4855 (Charter Bus Services). All National\u2019s underwriting guidelines specify that for Auto exposures in NAICS 4855 the standard $1,000 deductible is increased to $5,000.",
+     "id": "cbd46c3c-2df7-4fe0-84ad-7d4c59066f3e",
+     "response_metadata": "{}",
+     "role": "assistant",
+     "tool_calls": "",
+     "type": "user-facing assistant",
+     "usage_metadata": ""
+    }
+   ],
+   "reference answer": "You should offer a $5000.0 deductible.",
+   "correct": true,
+   "company name": "Mountain Explorer Charters",
+   "annual revenue": 3100000,
+   "number of employees": 12,
+   "total payroll": 480000,
+   "number of vehicles": 7,
+   "building construction": "Non-combustible \u2013 Examples included steel columns, beams and deck/floors.",
+   "state": "Colorado",
+   "company description": "Mountain Explorer Charters is a privately owned bus charter company based in Boulder, Colorado, serving tour groups, wedding parties, and corporate events. The company operates a small fleet of luxury and standard coaches, offering customizable transportation for trips to ski resorts, national parks, and special events. They specialize in customer-focused service, flexible scheduling, and safe travel through mountainous terrain.",
+   "lob": "auto"
+  }
+ ]
+}
